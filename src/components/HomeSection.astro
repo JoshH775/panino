@@ -1,0 +1,17 @@
+---
+type Props = {
+    color: 'peach' | 'forest'
+    className?: string
+}
+const { color, className }: Props = Astro.props
+
+const textColor = color === 'peach' ? 'forest' : 'peach'
+const xTranslateClass = color === 'peach' ? 'translate-x-1/4' : '-translate-x-1/4'
+
+---
+
+<div class={`h-80 bg-${color} text-${textColor} flex flex-col items-center justify-center gap-2 relative overflow-hidden ${className ?? ''}`}>
+    <div class={`absolute inset-0 bg-${textColor} opacity-10 rounded-full scale-150 -translate-y-1/4 ${xTranslateClass}`} />
+
+    <slot />
+</div>

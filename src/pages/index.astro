@@ -1,11 +1,24 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import HomeSection from '../components/HomeSection.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+
+	<HomeSection color='peach'>
+		<h1 class="text-6xl font-bold tracking-tighter text-center">Tuscan Style Sandwiches</h1>
+		<p class="text-xl">Experience the true taste of Tuscany with our handcrafted focaccia sandwiches.</p>
+	</HomeSection>
+
+	<HomeSection color='forest'>
+		<div class="flex justify-evenly w-full">
+			<div class="rounded-full bg-peach h-16 w-16 flex items-center justify-center">1</div>
+			<div class="rounded-full bg-peach h-16 w-16 flex items-center justify-center">2</div>
+			<div class="rounded-full bg-peach h-16 w-16 flex items-center justify-center">3</div>
+		</div>
+	</HomeSection>
+
+
 </Layout>
+
