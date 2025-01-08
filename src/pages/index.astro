@@ -1,13 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HomeSection from '../components/HomeSection.astro';
+import { Image } from 'astro:assets'
+import logo from '../assets/panino.png';
 
 ---
 
 <Layout>
 
 	<HomeSection color='peach'>
-		<h1 class="text-6xl font-bold tracking-tighter text-center">Tuscan Style Sandwiches</h1>
+		<h1 class="text-6xl font-bold tracking-tighter text-center">Tuscan Style Foccacia Sandwiches</h1>
+		<Image src={logo} alt={'Panino logo'} class="" />
 		<p class="text-xl">Experience the true taste of Tuscany with our handcrafted focaccia sandwiches.</p>
 	</HomeSection>
 
