@@ -1,26 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HomeSection from '../components/HomeSection.astro';
 import { Image } from 'astro:assets'
-import logo from '../assets/panino.png';
+import logo from '../assets/panino-nobg.png';
+import Button from '../components/Button';
 
 ---
 
 <Layout>
 
-	<HomeSection color='peach'>
-		<h1 class="text-6xl font-bold tracking-tighter text-center">Tuscan Style Foccacia Sandwiches</h1>
-		<Image src={logo} alt={'Panino logo'} class="" />
-		<p class="text-xl">Experience the true taste of Tuscany with our handcrafted focaccia sandwiches.</p>
-	</HomeSection>
+	<div class="bg-forest text-peach w-full flex flex-col items-center p-16">
+		<section class="flex flex-col w-4/5 items-center justify-center gap-6 ">
+			<p class="text-6xl font-bold text-center">Tuscan Style Foccacia Sandwiches</p>
+			<p class="text-xl text-center">Experience authentic Italian flavors with our handcrafted focaccia sandwiches, made fresh daily using traditional Tuscan recipes.</p>
 
-	<HomeSection color='forest'>
-		<div class="flex justify-evenly w-full">
-			<div class="rounded-full bg-peach h-16 w-16 flex items-center justify-center">1</div>
-			<div class="rounded-full bg-peach h-16 w-16 flex items-center justify-center">2</div>
-			<div class="rounded-full bg-peach h-16 w-16 flex items-center justify-center">3</div>
+			<div class="image-container aspect-square w-1/3 rounded-full bg-peach p-6">
+				<Image src={logo} alt="Panino logo" class='w-full h-full object-cover'/>
+			</div>
+
+			<div class="flex">
+				<Button text='Yadadyada' />
+				<Button text='Yadadyada' type='secondary' className='RAHAHAHAHHA'/>
+			</div>
+		</section>
+
+	</div>
+
+		<div class="w-full flex flex-col items-center p-16">
+		<section class="flex flex-col w-4/5 items-center justify-center gap-6">
+			<p class="text-4xl font-bold text-center">Our Menu</p>
+			<p class="text-xl text-center">Choose from a variety of delicious sandwiches, salads, and sides, all made with the freshest ingredients and served with a smile.</p>
+		</section>
 		</div>
-	</HomeSection>
+
+
+	</div>
+
+
+
 
 
 </Layout>
