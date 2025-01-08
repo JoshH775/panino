@@ -3,24 +3,37 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets'
 import logo from '../assets/panino-nobg.png';
 import Button from '../components/Button';
+import { Menu, MapPin } from 'lucide-react';
+
+
 
 ---
 
 <Layout>
 
+	
 	<div class="bg-forest text-peach w-full flex flex-col items-center p-16">
-		<section class="flex flex-col w-4/5 items-center justify-center gap-6 ">
-			<p class="text-6xl font-bold text-center">Tuscan Style Foccacia Sandwiches</p>
-			<p class="text-xl text-center">Experience authentic Italian flavors with our handcrafted focaccia sandwiches, made fresh daily using traditional Tuscan recipes.</p>
+		<section class="flex flex-col w-3/4 items-center justify-center gap-7 ">
+			<p class="text-6xl font-bold text-center fade-up">Tuscan Style Foccacia Sandwiches</p>
+			<p class="text-xl text-center fade-up">Experience authentic Italian flavors with our handcrafted focaccia sandwiches, made fresh daily using traditional Tuscan recipes.</p>
 
-			<div class="image-container aspect-square w-1/3 rounded-full bg-peach p-6">
+			<div class="flex gap-4 fade-up">
+				<Button>
+					<Menu />
+					Order Now
+				</Button>
+
+				<Button type='secondary'>
+					<MapPin />
+					Get Directions	
+				</Button>
+
+			</div>
+
+			<div class="image-container aspect-square w-1/3 rounded-full bg-peach p-6 logo">
 				<Image src={logo} alt="Panino logo" class='w-full h-full object-cover'/>
 			</div>
 
-			<div class="flex">
-				<Button text='Yadadyada' />
-				<Button text='Yadadyada' type='secondary' className='RAHAHAHAHHA'/>
-			</div>
 		</section>
 
 	</div>
@@ -41,3 +54,9 @@ import Button from '../components/Button';
 
 </Layout>
 
+
+
+<script>
+	import { animateAll } from '../animations';
+	animateAll();
+</script>
