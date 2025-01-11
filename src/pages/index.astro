@@ -1,70 +1,87 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets'
-import logo from '../assets/panino-nobg.png';
-import Button from '../components/Button';
-import { Menu, MapPin } from 'lucide-react';
-
-// use dvw for image
-
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logo from "../assets/panino-nobg.png";
+import Button from "../components/Button";
+import { Menu, MapPin, SquareMenu, Grape, CookingPot } from "lucide-react";
 ---
 
 <Layout>
+  <div class="w-full flex flex-col items-center p-16 pt-32">
+    <section class="flex w-[85%] items-center justify-center gap-7">
+      <div class="flex flex-col gap-6">
+        <p class="text-7xl font-bold fade-up">
+          Tuscan Style Foccacia Sandwiches
+        </p>
+        <p class="text-xl fade-up">
+          Experience authentic Italian flavors with our handcrafted focaccia
+          sandwiches, made fresh daily using traditional Tuscan recipes.
+        </p>
 
-	
-	<div class="bg-forest text-peach w-full flex flex-col items-center p-16 pt-32">
-		<section class="flex flex-col w-3/4 items-center justify-center gap-7">
-			<p class="text-6xl font-bold text-center fade-up">Tuscan Style Foccacia Sandwiches</p>
-			<p class="text-xl text-center fade-up">Experience authentic Italian flavors with our handcrafted focaccia sandwiches, made fresh daily using traditional Tuscan recipes.</p>
-	
-			<div class="image-container aspect-square  w-[20dvw] rounded-full bg-peach p-6">
-				<Image src={logo} alt="Panino logo" class='w-full h-full object-cover'/>
-			</div>
+        <div class="flex gap-4 fade-up">
+          <Button>
+            <Menu />
+            Order Now
+          </Button>
 
-			<div class="flex gap-4 fade-up">
-				<Button>
-					<Menu />
-					Order Now
-				</Button>
+          <Button type="secondary">
+            <MapPin />
+            Get Directions
+          </Button>
+        </div>
+      </div>
 
-				<Button type='secondary'>
-					<MapPin />
-					Get Directions	
-				</Button>
+      <div class="image-container aspect-square w-[50dvw] rounded-full p-6">
+        <Image
+          src={logo}
+          alt="Panino logo"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </section>
+  </div>
 
-			</div>
+  <div class="w-full flex flex-col items-center">
+    <section
+      class="flex items-center justify-center gap-6 bg-forest text-peach p-8"
+    >
+      <div class="flex flex-col text-center w-1/3 items-center">
+        <SquareMenu size={45} />
+        <p class="text-2xl font-semibold mt-6 mb-4">Fresh Daily Menu</p>
+        <p>
+          Focaccia sandwiches made fresh every day, using local ingredients and
+          inspired by Tuscan traditions.
+        </p>
+      </div>
 
-		</section>
+      <div class="flex flex-col text-center w-1/3 items-center">
+        <Grape size={45} />
+        <p class="text-2xl font-semibold mt-6 mb-4">A Taste of Tuscany</p>
+        <p>
+          Experience the flavors of Italy with sandwiches inspired by the
+          classic recipes of Tuscany.
+        </p>
+      </div>
 
-	</div>
-
-		<div class="w-full flex flex-col items-center p-16">
-		<section class="flex flex-col w-4/5 items-center justify-center gap-6">
-			<p class="text-4xl font-bold text-center">Our Menu</p>
-			<p class="text-xl text-center">Choose from a variety of delicious sandwiches, salads, and sides, all made with the freshest ingredients and served with a smile.</p>
-		</section>
-		</div>
-
-
-	</div>
-
-
-
-
-
+      <div class="flex flex-col text-center w-1/3 items-center">
+        <CookingPot size={45} />
+        <p class="text-2xl font-semibold mt-6 mb-4">Crafted with Care</p>
+        <p>
+          Bringing the art of Italian-inspired breadmaking to your table, served
+          quickly and with love.
+        </p>
+      </div>
+    </section>
+  </div>
 </Layout>
 
-
-
 <script>
-import { animateFadeUp, animateLogo } from "../animations";
+  import { animateFadeUp, animateLogo } from "../animations";
 
-	const fadeUpElements = document.querySelectorAll('.fade-up');
+  const fadeUpElements = document.querySelectorAll(".fade-up");
 
-	animateFadeUp(fadeUpElements, 20, {
-		staggerChildren: 0.35,
-	});
-	animateLogo()
-
-
+  animateFadeUp(fadeUpElements, 20, {
+    staggerChildren: 0.35,
+  });
+  animateLogo();
 </script>
