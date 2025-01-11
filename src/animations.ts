@@ -1,7 +1,17 @@
 import { animate, stagger } from 'motion'
+import type { Easing } from 'motion'
 
- function animateLogo() {
-    const logo = document.querySelectorAll('.logo')
+type TransitionSettings = {
+    duration?: number
+    easing?: Easing | Easing[]
+    delay?: number
+    staggerChildren?: number
+}
+
+//When inputting the elements, make sure you use the querySelectorAll method to select all the elements you want to animate.
+
+ export function animateLogo() {
+    const logo = document.querySelectorAll('.image-container')
     
     animate(
         logo,
@@ -16,25 +26,39 @@ import { animate, stagger } from 'motion'
     )
 }
 
- function animateFadeUp() {
-    const elements = document.querySelectorAll('.fade-up')
+ export function animateFadeUp(elements: NodeListOf<Element>, startingY: number, transitionSettings: TransitionSettings, blur = true) {
+
+    const { duration, staggerChildren, delay, easing } = transitionSettings
     
     animate(
         elements,
         {
             opacity: [0, 1],
-            y: [20, 0],
-            filter: ['blur(10px)', 'blur(0)'],
+            y: [startingY, 0],
+            filter: [`blur(${blur ? 10 : 0}px)`, 'blur(0px)'],
         },
         {
-           duration: 0.5,
-            ease: 'easeOut',
-            delay: stagger(0.35)
+            duration: duration ?? 0.5,
+            ease: easing ?? 'easeOut',
+            delay: stagger(staggerChildren ?? 0, { startDelay: delay ?? 0}),
         },
     )
 }
 
-export function animateAll() {
-    animateLogo()
-    animateFadeUp()
+export function animateTranslateY(elements: NodeListOf<Element>, translateY: number, transitionSettings: TransitionSettings) {
+
+    const { duration, staggerChildren, delay, easing } = transitionSettings
+
+    animate(
+        elements,
+        {
+            opacity: [0, 1],
+            y: [translateY, 0],
+        },
+        {
+            duration: duration ?? 0.5,
+            ease: easing ?? 'easeOut',
+            delay: stagger((staggerChildren ?? 0), { startDelay: delay ?? 0 }),
+        },
+    )
 }
