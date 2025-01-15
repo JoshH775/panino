@@ -11,7 +11,7 @@ import logo from "../assets/panino-nobg.png";
     <Image src={logo} alt="Panino logo" class="w-8 h-8" />
     <h1 class="ml-2 text-2xl font-bold">PANINO</h1>
   </a>
-  <nav class="flex gap-6" id="nav">
+  <nav class="flex gap-6 text-xl " id="nav">
     <a href="/" class="hover:underline">Home</a>
     <a href="/" class="hover:underline">Gallery</a>
     <a href="/" class="hover:underline">About</a>
@@ -21,14 +21,14 @@ import logo from "../assets/panino-nobg.png";
 <script>
   import { animateFadeUp, animateTranslateY } from "../animations";
 
-  const header = document.querySelectorAll("#header");
-  animateTranslateY(header, -50, {
+
+  animateTranslateY('#header', -50, {
     duration: 0.6,
   });
 
-  const links = document.querySelectorAll("#nav a");
+
   animateFadeUp(
-    links,
+    '#nav a',
     20,
     {
       staggerChildren: 0.2,
