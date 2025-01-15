@@ -18,21 +18,25 @@ export function animateLogo() {
     {
       scale: [0.5, 1],
       rotate: [-90, 0],
+      opacity: [0, 1],
     },
     {
       scale: { duration: 1, ease: "easeOut" },
       rotate: { duration: 1, ease: "easeOut" },
+      opacity: { duration: 1, ease: "easeOut" },
     }
   );
 }
 
 export function animateFadeUp(
-  elements: NodeListOf<Element>,
+  selector: string,
   startingY: number,
   transitionSettings: TransitionSettings,
   blur = true
 ) {
   const { duration, staggerChildren, delay, easing } = transitionSettings;
+
+  const elements = document.querySelectorAll(selector);
 
   animate(
     elements,
@@ -50,10 +54,12 @@ export function animateFadeUp(
 }
 
 export function animateTranslateY(
-  elements: NodeListOf<Element>,
+  selector: string,
   translateY: number,
   transitionSettings: TransitionSettings
 ) {
+
+  const elements = document.querySelectorAll(selector);
   const { duration, staggerChildren, delay, easing } = transitionSettings;
 
   animate(
