@@ -10,9 +10,11 @@ const { Icon, title, subtitle } = Astro.props
 ---
 
 <div class="flex flex-col text-center w-full md:w-1/5 items-center flavor-text mobile-landscape:w-2/3">
-    <Icon size={"1.8rem"} />
-    <p class="text-2xl mobile-landscape:text-lg font-semibold mt-4 mb-3">{title}</p>
-    <p>
-      {subtitle}
+    <Icon size="1.8rem" />
+    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mt-2 sm:mt-3 md:mt-4 mb-2 sm:mb-3 md:mb-4">
+        {title}
     </p>
-  </div>
+    <p class="text-sm sm:text-base md:text-lg lg:text-xl leading-tight sm:leading-snug md:leading-relaxed">
+        {subtitle}
+    </p>
+</div>
