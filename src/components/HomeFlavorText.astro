@@ -1,0 +1,18 @@
+---
+import type React from 'react'
+
+type Props = {
+    Icon: React.ElementType
+    title: string
+    subtitle: string
+}
+const { Icon, title, subtitle } = Astro.props
+---
+
+<div class="flex flex-col text-center w-full md:w-1/5 items-center flavor-text mobile-landscape:w-2/3">
+    <Icon size={"1.8rem"} />
+    <p class="text-2xl mobile-landscape:text-lg font-semibold mt-4 mb-3">{title}</p>
+    <p>
+      {subtitle}
+    </p>
+  </div>
