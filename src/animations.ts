@@ -12,6 +12,7 @@ type TransitionSettings = {
 
 export function animateLogo() {
   const logo = document.querySelectorAll(".image-container");
+  if (!logo) return;
 
   animate(
     logo,
@@ -37,6 +38,7 @@ export function animateFadeUp(
   const { duration, staggerChildren, delay, easing } = transitionSettings;
 
   const elements = document.querySelectorAll(selector);
+  if (!elements) return;
 
   animate(
     elements,
@@ -60,6 +62,7 @@ export function animateTranslateY(
 ) {
 
   const elements = document.querySelectorAll(selector);
+  if (!elements) return;
   const { duration, staggerChildren, delay, easing } = transitionSettings;
 
   animate(
