@@ -5,6 +5,9 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Glacial Indifference', 'sans-serif'],
+			},
+			screens: {
+				'mobile-landscape': { raw: '(max-width: 768px) and (orientation: landscape)' },
 			}
 		},
 		colors: {
@@ -15,4 +18,3 @@ export default {
 	plugins: [],
 }
 
-//pee ffbd59
