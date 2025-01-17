@@ -19,7 +19,7 @@ export default function Button({ type = 'primary', className = '', onClick, chil
 
     return (
         <button
-            className={`${bgColor} ${textColor} ${className} ${borderColor} flex px-6 py-2 rounded-md gap-3 items-center justify-between h-fit w-fit border`}
+            className={`${bgColor} ${textColor} ${className} ${borderColor} flex px-3 md:px-6 py-2 rounded-md gap-3 items-center justify-between h-fit w-fit border`}
             onClick={handleClick}
         >
             {children}
