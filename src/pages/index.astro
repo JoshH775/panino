@@ -2,10 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/panino-nobg.png";
-import Button from "../components/Button";
+import Button from "../components/Button.astro"
+import instagramSVG from "../assets/instagram.svg";
 import {
   ClipboardList,
-  Menu,
   MapPin,
   CookingPot,
   Sandwich,
@@ -36,12 +36,12 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
           </p>
 
           <div class="flex gap-4 justify-center md:justify-start fade-up">
-            <Button onClick={()=>{window.open('https://www.instagram.com/panino_focacceria/', '_blank')}} client:load>
-              <Menu />
+            <Button id="btn1">
+              <Image src={instagramSVG} alt="Instagram logo" />
               Check us out on Instagram
             </Button>
 
-            <Button type="secondary" client:load>
+            <Button type="secondary" id="btn2">
               <MapPin />
               Get Directions
             </Button>
@@ -100,4 +100,14 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
     staggerChildren: 0.2,
     delay: 0.6,
   });
+
+  document.querySelector("#btn1")!.addEventListener("click", () => {
+    window.open("https://www.instagram.com/panino_focacceria/", "_blank");
+  });
+
+  document.querySelector("#btn2")!.addEventListener("click", () => {
+    window.open("https://maps.app.goo.gl/2KPWZpTVrV9h1D9s8", "_blank");
+  });
+
+
 </script>

@@ -1,0 +1,21 @@
+---
+type Props = {
+    id?: string
+    type?: 'primary' | 'secondary'
+    className?: string
+}
+const { type = 'primary', className = '', id } = Astro.props
+
+const bgColor = type === 'primary' ? 'bg-peach' : 'bg-forest'
+const borderColor = type === 'primary' ? 'border-forest' : 'border-peach'
+const textColor = type === 'primary' ? 'text-forest' : 'text-peach'
+
+---
+
+<button
+    class={`${bgColor} ${textColor} ${className} ${borderColor} flex px-3 md:px-6 py-2 rounded-md gap-3 items-center justify-between h-fit w-fit border`}
+    id={id}
+>
+<slot />
+</button>
+
