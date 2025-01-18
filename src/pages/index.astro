@@ -2,14 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/panino-nobg.png";
-import Button from "../components/Button.astro"
+import Button from "../components/Button.astro";
 import instagramSVG from "../assets/instagram.svg";
-import {
-  ClipboardList,
-  MapPin,
-  CookingPot,
-  Sandwich,
-} from "lucide-react";
+import { ClipboardList, MapPin, CookingPot, Sandwich } from "lucide-react";
 import HomeFlavorText from "../components/HomeFlavorText.astro";
 ---
 
@@ -60,7 +55,9 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
       </section>
     </div>
 
-    <div class="w-full flex flex-col items-center mobile-landscape:h-[100dvh] md:overflow-hidden">
+    <div
+      class="w-full flex flex-col items-center mobile-landscape:h-[100dvh] md:overflow-hidden"
+    >
       <section
         class="will-change-transform flex md:flex-row mobile-landscape:flex-row flex-col items-center w-full justify-evenly gap-6 bg-forest text-peach h-full md:p-7 p-6 pt-8 flavor-text-container"
       >
@@ -86,6 +83,7 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
 
 <script>
   import { animateFadeUp, animateLogo, animateTranslateY } from "../animations";
+  import { addOnClick } from "../utils";
 
   animateFadeUp(".fade-up", 20, {
     staggerChildren: 0.35,
@@ -101,13 +99,11 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
     delay: 0.6,
   });
 
-  document.querySelector("#btn1")!.addEventListener("click", () => {
-    window.open("https://www.instagram.com/panino_focacceria/", "_blank");
+  addOnClick("#btn1", () => {
+    window.open("https://www.instagram.com/panino.london/", "_blank");
   });
 
-  document.querySelector("#btn2")!.addEventListener("click", () => {
+  addOnClick("#btn2", () => {
     window.open("https://maps.app.goo.gl/2KPWZpTVrV9h1D9s8", "_blank");
   });
-
-
 </script>
