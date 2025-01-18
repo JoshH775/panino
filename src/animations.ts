@@ -32,13 +32,17 @@ export function animateLogo() {
 export function animateFadeUp(
   selector: string,
   startingY: number,
-  transitionSettings: TransitionSettings,
+  transitionSettings: TransitionSettings = {},
   blur = true
 ) {
-  const { duration, staggerChildren, delay, easing } = transitionSettings;
+  const elements: NodeListOf<Element> = document.querySelectorAll(selector)
 
-  const elements = document.querySelectorAll(selector);
-  if (!elements) return;
+  if (!elements.length) {
+    console.log('No Elements!')
+    return
+  }
+
+  const { duration, staggerChildren, delay, easing } = transitionSettings
 
   animate(
     elements,
@@ -52,8 +56,9 @@ export function animateFadeUp(
       ease: easing ?? "easeOut",
       delay: stagger(staggerChildren ?? 0, { startDelay: delay ?? 0 }),
     }
-  );
+  )
 }
+
 
 export function animateTranslateY(
   selector: string,
@@ -61,8 +66,13 @@ export function animateTranslateY(
   transitionSettings: TransitionSettings
 ) {
 
-  const elements = document.querySelectorAll(selector);
-  if (!elements) return;
+  const elements: NodeListOf<Element> = document.querySelectorAll(selector);
+
+  if (!elements.length) {
+    console.log("No Elements!");
+    return;
+  }
+
   const { duration, staggerChildren, delay, easing } = transitionSettings;
 
   animate(
