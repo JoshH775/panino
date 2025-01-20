@@ -6,7 +6,7 @@ import Header from "../components/Header.astro";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image" href="/panino-nobg.png" />
     <meta name="generator" content={Astro.generator} />
     <title>Panino Focacceria</title>
@@ -26,3 +26,9 @@ import Header from "../components/Header.astro";
     height: 100%;
   }
 </style>
+
+
+<script>
+  console.log(`Width: ${window.innerWidth}, Orientation: ${screen.orientation.type}`)
+
+</script>

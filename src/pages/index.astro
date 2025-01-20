@@ -9,28 +9,28 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
 ---
 
 <Layout>
-  <div class="min-h-[100dvh] flex flex-col w-full">
+  <div class="min-h-[100svh] flex flex-col w-full">
     <div
-      class="w-full flex flex-col md:p-16 md:pt-32 flex-grow justify-center items-center"
+      class="w-full flex flex-col lg:p-16 lg:pt-32 flex-grow justify-center items-center"
     >
       <section
-        class="h-[100dvh] md:h-fit flex flex-col-reverse w-full md:flex-row md:w-[85%] items-center justify-center md:gap-7 p-2 mobile-landscape:flex-row"
+        class="h-[100svh] lg:h-fit flex flex-col-reverse w-full lg:flex-row lg:w-[85%] items-center justify-center lg:gap-7 p-2 mobile-landscape:flex-row overflow-hidden"
       >
-        <div class="flex flex-col gap-6 md:w-1/2">
+        <div class="flex flex-col gap-6 lg:w-1/2">
           <p
-            class=" text-center md:text-left text-3xl md:text-5xl xl:text-5xl 3xl:text-7xl font-bold fade-up"
+            class=" text-center lg:text-left text-3xl lg:text-5xl xl:text-5xl 3xl:text-7xl font-bold fade-up"
           >
             Tuscan Style Foccacia Sandwiches
           </p>
           <p
-            class="text-lg text-center md:text-left fade-up mobile-landscape:text-base md:text-lg"
+            class="text-lg text-center lg:text-left fade-up mobile-landscape:text-base lg:text-lg"
           >
             Get a taste of traditional Italian PANINO, a new fast casual
             focaccia sandwich shop boasting delicious homemade favourites
             perfect for a quick and hearty bite to go.
           </p>
 
-          <div class="flex gap-4 justify-center md:justify-start fade-up">
+          <div class="flex gap-4 justify-center lg:justify-start fade-up">
             <Button id="btn1">
               <Image src={instagramSVG} alt="Instagram logo" />
               Check us out on Instagram
@@ -44,7 +44,7 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
         </div>
 
         <div
-          class="image-container aspect-square w-full md:w-1/3 rounded-full p-6"
+          class="image-container aspect-square w-full lg:w-1/3 rounded-full p-6"
         >
           <Image
             src={logo}
@@ -56,10 +56,10 @@ import HomeFlavorText from "../components/HomeFlavorText.astro";
     </div>
 
     <div
-      class="w-full flex flex-col items-center mobile-landscape:h-[100dvh] "
+      class="w-full flex flex-col items-center mobile-landscape:h-[100svh] "
     >
       <section
-        class="md:will-change-transform flex md:flex-row mobile-landscape:flex-row flex-col items-center w-full justify-evenly gap-6 bg-forest text-peach h-full md:p-7 p-6 pt-8 md:flavor-text-container"
+        class="lg:will-change-transform flex lg:flex-row mobile-landscape:flex-row flex-col items-center w-full justify-evenly gap-6 bg-forest text-peach h-full lg:p-7 p-6 pt-8 lg:flavor-text-container overflow-hidden"
       >
         <HomeFlavorText
           Icon={ClipboardList}

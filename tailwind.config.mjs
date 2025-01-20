@@ -7,7 +7,7 @@ export default {
 				sans: ['Glacial Indifference', 'sans-serif'],
 			},
 			screens: {
-				'mobile-landscape': { raw: '(max-width: 768px) and (orientation: landscape)' },
+				'mobile-landscape': { raw: 'only screen and (max-width: 1024px) and (orientation: landscape)' },
 				'3xl': '1729px'
 			}
 		},
