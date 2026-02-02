@@ -47,8 +47,8 @@ const url = "https://www.paninofocacceria.com"
 	</head>
 	<body class="bg-white text-black">
 		<!-- Header -->
-		<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 bg-primary">
-			<a href="/" class="text-xl font-bold tracking-tight">PANINO FOCACCERIA</a>
+		<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 bg-white border-b-2 border-primary">
+			<a href="/" class="text-xl font-bold tracking-tight"><span class="text-primary">PANINO</span> FOCACCERIA</a>
 			<nav class="flex gap-6 text-sm font-medium">
 				<a href="#menu" class="hover:opacity-70 transition-opacity">Menu</a>
 				<a href="#find-us" class="hover:opacity-70 transition-opacity">Find Us</a>
@@ -58,8 +58,8 @@ const url = "https://www.paninofocacceria.com"
 		<slot />
 
 		<!-- Footer -->
-		<footer class="py-8 px-6 bg-primary">
-			<p class="text-center text-sm">© {new Date().getFullYear()} Panino Focacceria</p>
+		<footer class="py-8 px-6 bg-white border-t-2 border-primary">
+			<p class="text-center text-sm">© {new Date().getFullYear()} <span class="text-primary">Panino</span> Focacceria</p>
 		</footer>
 	</body>
 </html>
