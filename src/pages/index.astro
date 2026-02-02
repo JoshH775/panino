@@ -1,109 +1,17 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import logo from "../assets/panino-nobg.png";
-import Button from "../components/Button.astro";
-import instagramSVG from "../assets/instagram.svg";
-import { ClipboardList, MapPin, CookingPot, Sandwich } from "lucide-react";
-import HomeFlavorText from "../components/HomeFlavorText.astro";
+
 ---
 
-<Layout>
-  <div class="min-h-[100svh] flex flex-col w-full">
-    <div
-      class="w-full flex flex-col lg:p-16 lg:pt-32 flex-grow justify-center items-center"
-    >
-      <section
-        class="h-[100svh] lg:h-fit flex flex-col-reverse w-full lg:flex-row lg:w-[85%] items-center justify-center lg:gap-7 p-4 mobile-landscape:flex-row overflow-hidden"
-      >
-        <div class="flex flex-col gap-6 lg:w-1/2">
-          <p
-            class=" text-center lg:text-left text-3xl lg:text-5xl xl:text-5xl 3xl:text-7xl font-bold fade-up"
-          >
-            Tuscan Style Foccacia Sandwiches
-          </p>
-          <p
-            class="text-lg text-center lg:text-left fade-up mobile-landscape:text-base lg:text-lg"
-          >
-            Get a taste of traditional Italian PANINO, a new fast casual
-            focaccia sandwich business boasting delicious homemade favourites
-            perfect for a quick and hearty bite to go.
-          </p>
-
-          <div class="flex gap-4 justify-center lg:justify-start fade-up">
-            <Button id="btn1">
-              <Image src={instagramSVG} alt="Instagram logo" />
-              Check us out on Instagram
-            </Button>
-
-            <Button type="secondary" id="btn2">
-              <MapPin />
-              Get Directions
-            </Button>
-          </div>
-        </div>
-
-        <div
-          class="image-container aspect-square w-full lg:w-1/3 rounded-full p-6"
-        >
-          <Image
-            src={logo}
-            alt="Panino logo"
-            class="object-cover"
-          />
-        </div>
-      </section>
-    </div>
-
-    <div
-      class="w-full flex flex-col items-center mobile-landscape:h-[100svh] "
-    >
-      <section
-        class="lg:will-change-transform flex lg:flex-row mobile-landscape:flex-row flex-col items-center w-full justify-evenly gap-6 bg-forest text-peach h-full lg:p-7 p-6 pt-8 lg:flavor-text-container overflow-hidden"
-      >
-        <HomeFlavorText
-          Icon={ClipboardList}
-          title="Fresh Daily Menu"
-          subtitle="Focaccia sandwiches made fresh every day, using local ingredients and inspired by Tuscan traditions."
-        />
-        <HomeFlavorText
-          Icon={Sandwich}
-          title="Signature Sandwiches"
-          subtitle="Savor focaccia sandwiches like the meaty 'Lucky Lou' Romano or a veggie option with grilled portabella, aubergine, courgette, and goat's cheese—all on homemade focaccia."
-        />
-        <HomeFlavorText
-          Icon={CookingPot}
-          title="Crafted with Care"
-          subtitle="Bringing the art of Italian-inspired breadmaking to your table, served quickly and with love."
-        />
-      </section>
-    </div>
-  </div>
-</Layout>
-
-<script>
-  import { animateFadeUp, animateLogo, animateTranslateY } from "../animations";
-  import { addOnClick } from "../utils";
-
-  animateFadeUp(".fade-up", 20, {
-    staggerChildren: 0.35,
-  });
-  animateLogo();
-
-  animateTranslateY(".flavor-text-container", 50, {
-    duration: 0.6,
-  });
-
-  animateFadeUp(".flavor-text", 20, {
-    staggerChildren: 0.2,
-    delay: 0.6,
-  });
-
-  addOnClick("#btn1", () => {
-    window.open("https://www.instagram.com/panino_focacceria/", "_blank");
-  });
-
-  addOnClick("#btn2", () => {
-    window.open("https://maps.app.goo.gl/8qMWhrkHRmaqkwAQA", "_blank");
-  });
-</script>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+	</body>
+</html>
