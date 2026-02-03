@@ -35,6 +35,10 @@ const url = "https://www.paninofocacceria.com"
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${url}/og-image.jpg`} />
+
+		<!-- Open Graph Image -->
+		<meta property="og:image" content={`${url}/og-image.jpg`} />
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -58,7 +62,9 @@ const url = "https://www.paninofocacceria.com"
 			</nav>
 		</header>
 
-		<slot />
+		<main>
+			<slot />
+		</main>
 
 		<!-- Footer -->
 		<footer class="py-8 px-6 bg-white border-t-2 border-primary">
