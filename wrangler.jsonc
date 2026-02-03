@@ -1,0 +1,24 @@
+{
+	"main": "dist/_worker.js/index.js",
+	"name": "paninofocacceria",
+  "compatibility_date": "2026-02-03",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "./dist"
+	},
+	"observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "panino",
+      "database_id": "20a2d507-559d-48ff-83e8-e44d8c265a95",
+      "migrations_dir": "./src/db/migrations",
+    }
+  ]
+}
