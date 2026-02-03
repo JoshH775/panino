@@ -10,28 +10,32 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 
 <Layout>
 	<!-- Hero -->
-	<section class="min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 bg-primary/10">
-		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-			<!-- Left: Image -->
-			<div class="order-1 relative">
+	<section class="min-h-screen md:flex md:items-center pt-8 md:pt-24 pb-12 px-6 md:px-12 lg:px-24 bg-primary/10">
+		<div class="max-w-6xl mx-auto md:grid md:grid-cols-2 md:gap-12 md:items-center">
+			<!-- Image (desktop only) -->
+			<div class="hidden md:block relative">
 				<div class="rounded-2xl overflow-hidden shadow-lg border-4 border-primary">
 					<Image src={prosciuttoSandwich} alt="Fresh prosciutto focaccia sandwich" class="w-full h-auto hover:scale-105 transition-transform duration-300" />
 				</div>
 				<!-- Logo placeholder -->
-				<div class="absolute -top-9 -left-9 size-40 bg-primary rounded-full shadow-lg flex items-center justify-center text-base font-bold z-10">
+				<div class="absolute -top-6 -left-3 md:-top-9 md:-left-9 size-24 md:size-40 bg-primary rounded-full shadow-lg flex items-center justify-center text-xs md:text-base font-bold z-10">
 					LOGO
 				</div>
 			</div>
 			<!-- Right: Text + Schedule -->
-			<div class="order-2">
+			<div class="order-2 text-center md:text-left">
+				<!-- Mobile logo -->
+				<div class="md:hidden size-28 bg-primary rounded-full shadow-lg flex items-center justify-center text-sm font-bold mx-auto mb-6">
+					LOGO
+				</div>
 				<h1 class="font-bold mb-4">
-					<span class="text-5xl md:text-7xl lg:text-8xl text-primary block">panino</span>
-					<span class="text-2xl md:text-3xl lg:text-4xl text-gray-700">focacceria</span>
+					<span class="text-8xl text-primary block">panino</span>
+					<span class="text-4xl text-gray-700">focacceria</span>
 				</h1>
 				<p class="text-xl text-gray-600 mb-8">Handmade focaccia. Fresh fillings. The taste of Tuscany, one market at a time.</p>
 
 				<!-- This Week Schedule -->
-				<div class="border-l-4 border-primary pl-4">
+				<div class="text-left border-l-4 border-primary pl-4">
 					<p class="font-semibold text-lg mb-3">Find us this week:</p>
 					<ul class="space-y-2 text-gray-700">
 						<li><a href="https://www.google.com/maps/place/Bicester+Friday+Market/@51.8976942,-1.1554755,17z" target="_blank" class="hover:text-primary transition-colors">Fri - Bicester</a></li>
@@ -40,7 +44,7 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 					</ul>
 					<p class="text-xs text-gray-400 mt-2">Click for directions</p>
 				</div>
-				<div class="flex flex-wrap items-center gap-4 mt-6">
+				<div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-6">
 					<a href="#menu" class="bg-primary px-6 py-3 font-semibold hover:bg-primary/80 transition-colors">Order Now</a>
 					<a href="#find-us" class="text-sm text-gray-500 hover:text-primary">See full schedule →</a>
 				</div>
