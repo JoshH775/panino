@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Image } from 'astro:assets'
+import Instagram from '../components/icons/Instagram.astro'
 import marketStall from '../images/market-stall.jpg'
 import capreseSandwich from '../images/caprese-sandwich.jpg'
 import prosciuttoSandwich from '../images/prosciutto-sandwich.jpg'
@@ -9,65 +10,81 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 
 <Layout>
 	<!-- Hero -->
-	<section class="min-h-screen flex flex-col justify-center items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 bg-linear-to-br from-primary/10 to-white">
-		<div class="mx-auto grid md:grid-cols-2 gap-12 items-center h-full">
-			<!-- Left: Text -->
-			<div class="order-2 md:order-1">
-				<div class="w-16 h-1 bg-primary mb-6"></div>
-				<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Tuscan<br><span class="text-primary">Focaccia</span><br>Sandwiches</h1>
-				<p class="text-xl md:text-2xl text-gray-600 mb-8">Fresh at local markets across Oxfordshire</p>
-				<a href="#menu" class="bg-primary px-6 py-3 font-semibold hover:bg-primary/80 transition-colors inline-block w-fit">View Menu</a>
+	<section class="min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 bg-primary/10">
+		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+			<!-- Left: Image -->
+			<div class="order-1 relative">
+				<div class="rounded-2xl overflow-hidden shadow-lg border-4 border-primary">
+					<Image src={prosciuttoSandwich} alt="Fresh prosciutto focaccia sandwich" class="w-full h-auto hover:scale-105 transition-transform duration-300" />
+				</div>
+				<!-- Logo placeholder -->
+				<div class="absolute -top-9 -left-9 size-40 bg-primary rounded-full shadow-lg flex items-center justify-center text-base font-bold z-10">
+					LOGO
+				</div>
 			</div>
-			<!-- Right: Large circle with smaller image circle -->
-			<div class="order-1 md:order-2 relative flex justify-center items-center py-8">
-				<!-- Accent circles behind -->
-				<div class="absolute -top-4 -right-4 w-1/4 aspect-square rounded-full bg-primary/30"></div>
-				<div class="absolute bottom-0 right-0 w-1/3 aspect-square rounded-full bg-primary/20"></div>
-				<!-- Small image circle overlapping -->
-				<div class="absolute bottom-0 left-0 md:left-4 w-1/3 max-w-52 aspect-square rounded-full overflow-hidden border-4 border-primary shadow-lg z-10">
-					<Image src={capreseSandwich} alt="Caprese sandwich" class="w-full h-full object-cover" />
+			<!-- Right: Text + Schedule -->
+			<div class="order-2">
+				<h1 class="font-bold mb-4">
+					<span class="text-5xl md:text-7xl lg:text-8xl text-primary block">panino</span>
+					<span class="text-2xl md:text-3xl lg:text-4xl text-gray-700">focacceria</span>
+				</h1>
+				<p class="text-xl text-gray-600 mb-8">Handmade focaccia. Fresh fillings. The taste of Tuscany, one market at a time.</p>
+
+				<!-- This Week Schedule -->
+				<div class="border-l-4 border-primary pl-4">
+					<p class="font-semibold text-lg mb-3">Find us this week:</p>
+					<ul class="space-y-2 text-gray-700">
+						<li><a href="https://www.google.com/maps/place/Bicester+Friday+Market/@51.8976942,-1.1554755,17z" target="_blank" class="hover:text-primary transition-colors">Fri - Bicester</a></li>
+						<li><a href="https://maps.google.com/?q=High+Street,+Kidlington,+OX5+2DH" target="_blank" class="hover:text-primary transition-colors">Sat - Kidlington</a></li>
+						<li><a href="https://www.google.com/maps/place/Thame+Market/@51.7465172,-0.9762741,17z" target="_blank" class="hover:text-primary transition-colors">Tue - Thame</a></li>
+					</ul>
+					<p class="text-xs text-gray-400 mt-2">Click for directions</p>
 				</div>
-				<!-- Main large circle -->
-				<div class="w-full max-w-md lg:max-w-xl aspect-square rounded-full overflow-hidden shadow-xl border-4 border-primary">
-					<Image src={prosciuttoSandwich} alt="Fresh prosciutto focaccia sandwich" class="w-full h-full object-cover" />
+				<div class="flex flex-wrap items-center gap-4 mt-6">
+					<a href="#menu" class="bg-primary px-6 py-3 font-semibold hover:bg-primary/80 transition-colors">Order Now</a>
+					<a href="#find-us" class="text-sm text-gray-500 hover:text-primary">See full schedule →</a>
 				</div>
+				<a href="https://instagram.com/paninofocacceria" target="_blank" class="inline-flex items-center gap-2 mt-6 text-gray-500 hover:text-primary transition-colors">
+					<Instagram />
+					<span class="text-sm font-medium">@paninofocacceria</span>
+				</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- Menu -->
-	<section id="menu" class="py-20 px-6 bg-stone-100">
+	<section id="menu" class="py-20 px-6 bg-white">
 		<h2 class="text-3xl font-bold text-center mb-12">The Menu</h2>
 		<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
 			<!-- Sandwich 1 -->
-			<div class="bg-white p-4">
+			<div class="bg-white p-3 pb-6 shadow-lg rotate-[-2deg] hover:rotate-0 transition-transform">
 				<div class="aspect-square mb-4 overflow-hidden">
 					<Image src={prosciuttoSandwich} alt="Prosciutto focaccia sandwich" class="w-full h-full object-cover" />
 				</div>
-				<h3 class="text-xl font-semibold mb-2">Prosciutto</h3>
-				<p class="text-gray-600">Aged prosciutto, fresh mozzarella, rocket on fresh focaccia.</p>
+				<h3 class="text-xl font-semibold mb-1">Prosciutto</h3>
+				<p class="text-gray-600 text-sm">Aged prosciutto, fresh mozzarella, rocket on fresh focaccia.</p>
 			</div>
 			<!-- Sandwich 2 -->
-			<div class="bg-white p-4">
+			<div class="bg-white p-3 pb-6 shadow-lg rotate-[1deg] hover:rotate-0 transition-transform">
 				<div class="aspect-square mb-4 overflow-hidden">
 					<Image src={capreseSandwich} alt="Caprese focaccia sandwich" class="w-full h-full object-cover" />
 				</div>
-				<h3 class="text-xl font-semibold mb-2">Caprese</h3>
-				<p class="text-gray-600">Fresh mozzarella, tomato, basil, balsamic glaze.</p>
+				<h3 class="text-xl font-semibold mb-1">Caprese</h3>
+				<p class="text-gray-600 text-sm">Fresh mozzarella, tomato, basil, balsamic glaze.</p>
 			</div>
 			<!-- Sandwich 3 -->
-			<div class="bg-white p-4">
+			<div class="bg-white p-3 pb-6 shadow-lg rotate-[3deg] hover:rotate-0 transition-transform">
 				<div class="aspect-square mb-4 overflow-hidden">
 					<Image src={sandwichTrio} alt="Selection of focaccia sandwiches" class="w-full h-full object-cover object-bottom" />
 				</div>
-				<h3 class="text-xl font-semibold mb-2">Vegetariano</h3>
-				<p class="text-gray-600">Grilled vegetables, goat cheese, rocket, balsamic glaze.</p>
+				<h3 class="text-xl font-semibold mb-1">Vegetariano</h3>
+				<p class="text-gray-600 text-sm">Grilled vegetables, goat cheese, rocket, balsamic glaze.</p>
 			</div>
 		</div>
 	</section>
 
 	<!-- Find Us -->
-	<section id="find-us" class="py-20 px-6">
+	<section id="find-us" class="py-20 px-6 bg-primary/10">
 		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 			<div class="aspect-video overflow-hidden">
 				<Image src={marketStall} alt="Panino Focacceria market stall" class="w-full h-full object-cover" />
@@ -94,7 +111,7 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 	</section>
 
 	<!-- Instagram -->
-	<section class="py-20 px-6 bg-stone-50">
+	<section class="py-20 px-6 bg-white">
 		<div class="max-w-6xl mx-auto">
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
 				<div class="aspect-square overflow-hidden">
