@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import Layout from '../layouts/Layout.astro'
 import { Image } from 'astro:assets'
 import Instagram from '../components/icons/Instagram.astro'
@@ -12,22 +14,17 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 	<!-- Hero -->
 	<section class="min-h-screen md:flex md:items-center pt-8 md:pt-24 pb-12 px-6 md:px-12 lg:px-24 bg-primary/10">
 		<div class="max-w-6xl mx-auto md:grid md:grid-cols-2 md:gap-12 md:items-center">
-			<!-- Image (desktop only) -->
-			<div class="hidden md:block relative">
-				<div class="rounded-2xl overflow-hidden shadow-lg border-4 border-primary">
+			<!-- Image + Logo -->
+			<div class="relative">
+				<div class="hidden md:block rounded-2xl overflow-hidden shadow-lg border-4 border-primary">
 					<Image src={prosciuttoSandwich} alt="Fresh prosciutto focaccia sandwich" class="w-full h-auto hover:scale-105 transition-transform duration-300" />
 				</div>
-				<!-- Logo placeholder -->
-				<div class="absolute -top-6 -left-3 md:-top-9 md:-left-9 size-24 md:size-40 bg-primary rounded-full shadow-lg flex items-center justify-center text-xs md:text-base font-bold z-10">
+				<div class="mx-auto mb-6 md:mb-0 md:absolute md:-top-9 md:-left-9 size-50 md:size-40 bg-primary rounded-full shadow-lg flex items-center justify-center text-sm md:text-base font-bold md:z-10">
 					LOGO
 				</div>
 			</div>
 			<!-- Right: Text + Schedule -->
 			<div class="order-2 text-center md:text-left">
-				<!-- Mobile logo -->
-				<div class="md:hidden size-28 bg-primary rounded-full shadow-lg flex items-center justify-center text-sm font-bold mx-auto mb-6">
-					LOGO
-				</div>
 				<h1 class="font-bold mb-4">
 					<span class="text-8xl text-primary block">panino</span>
 					<span class="text-4xl text-gray-700">focacceria</span>
@@ -45,7 +42,7 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 					<p class="text-xs text-gray-400 mt-2">Click for directions</p>
 				</div>
 				<div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-6">
-					<a href="#menu" class="bg-primary px-6 py-3 font-semibold hover:bg-primary/80 transition-colors">Order Now</a>
+					<a href="/order" class="bg-primary px-6 py-3 font-semibold hover:bg-primary/80 transition-colors">Buy The Bread</a>
 					<a href="#find-us" class="text-sm text-gray-500 hover:text-primary">See full schedule →</a>
 				</div>
 				<a href="https://instagram.com/paninofocacceria" target="_blank" class="inline-flex items-center gap-2 mt-6 text-gray-500 hover:text-primary transition-colors">
@@ -61,7 +58,7 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 		<h2 class="text-3xl font-bold text-center mb-12">The Menu</h2>
 		<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
 			<!-- Sandwich 1 -->
-			<div class="bg-white p-3 pb-6 shadow-lg rotate-[-2deg] hover:rotate-0 transition-transform">
+			<div class="bg-white p-3 pb-6 shadow-lg rotate-2 hover:rotate-0 transition-transform">
 				<div class="aspect-square mb-4 overflow-hidden">
 					<Image src={prosciuttoSandwich} alt="Prosciutto focaccia sandwich" class="w-full h-full object-cover" />
 				</div>
@@ -69,7 +66,7 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 				<p class="text-gray-600 text-sm">Aged prosciutto, fresh mozzarella, rocket on fresh focaccia.</p>
 			</div>
 			<!-- Sandwich 2 -->
-			<div class="bg-white p-3 pb-6 shadow-lg rotate-[1deg] hover:rotate-0 transition-transform">
+			<div class="bg-white p-3 pb-6 shadow-lg rotate-1 hover:rotate-0 transition-transform">
 				<div class="aspect-square mb-4 overflow-hidden">
 					<Image src={capreseSandwich} alt="Caprese focaccia sandwich" class="w-full h-full object-cover" />
 				</div>
@@ -77,7 +74,7 @@ import sandwichTrio from '../images/sandwich-trio.jpg'
 				<p class="text-gray-600 text-sm">Fresh mozzarella, tomato, basil, balsamic glaze.</p>
 			</div>
 			<!-- Sandwich 3 -->
-			<div class="bg-white p-3 pb-6 shadow-lg rotate-[3deg] hover:rotate-0 transition-transform">
+			<div class="bg-white p-3 pb-6 shadow-lg rotate-1 hover:rotate-0 transition-transform">
 				<div class="aspect-square mb-4 overflow-hidden">
 					<Image src={sandwichTrio} alt="Selection of focaccia sandwiches" class="w-full h-full object-cover object-bottom" />
 				</div>
