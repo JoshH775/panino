@@ -3,141 +3,155 @@ export const prerender = true
 
 import Layout from '../layouts/Layout.astro'
 import { Image } from 'astro:assets'
-import Instagram from '../components/icons/Instagram.astro'
+import logo from '../images/logo.png'
 import marketStall from '../images/market-stall.jpg'
 import capreseSandwich from '../images/caprese-sandwich.jpg'
 import prosciuttoSandwich from '../images/prosciutto-sandwich.jpg'
 import sandwichTrio from '../images/sandwich-trio.jpg'
+
+const tickerWords = [
+	'Focaccia',
+	'Prosciutto',
+	'Mozzarella',
+	'Caprese',
+	'Homemade',
+	'Tuscan',
+	'Fresh Daily',
+	'Market Fresh',
+]
+
+const tickerContent = [...tickerWords, ...tickerWords]
 ---
 
 <Layout>
 	<!-- Hero -->
-	<section class="min-h-screen md:flex md:items-center pt-8 md:pt-24 pb-12 px-6 md:px-12 lg:px-24 bg-primary/10">
-		<div class="max-w-6xl mx-auto md:grid md:grid-cols-2 md:gap-12 md:items-center">
-			<!-- Image + Logo -->
-			<div class="relative">
-				<div class="hidden md:block rounded-2xl overflow-hidden shadow-lg border-4 border-primary">
-					<Image src={prosciuttoSandwich} alt="Fresh prosciutto focaccia sandwich" class="w-full h-auto hover:scale-105 transition-transform duration-300" />
-				</div>
-				<div class="mx-auto mb-6 md:mb-0 md:absolute md:-top-9 md:-left-9 size-50 md:size-40 bg-primary rounded-full shadow-lg flex items-center justify-center text-sm md:text-base font-bold md:z-10">
-					LOGO
-				</div>
-			</div>
-			<!-- Right: Text + Schedule -->
-			<div class="order-2 text-center md:text-left">
-				<h1 class="font-bold mb-4">
-					<span class="text-8xl text-primary block">panino</span>
-					<span class="text-4xl text-gray-700">focacceria</span>
+	<section class="relative min-h-[70vh] flex items-end overflow-hidden">
+		<Image
+			src={prosciuttoSandwich}
+			alt="Fresh prosciutto focaccia sandwich close-up"
+			class="absolute inset-0 w-full h-full object-cover scale-105"
+		/>
+		<div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-black/20"></div>
+		<div class="relative w-full max-w-7xl mx-auto px-6 pb-16 pt-32 flex items-end justify-between gap-8">
+			<div>
+				<h1 class="animate-fade-up">
+					<span class="block text-primary text-6xl md:text-8xl lg:text-9xl font-900 leading-[0.85] tracking-tight">panino</span>
+					<span class="block text-white text-xl md:text-3xl font-500 uppercase tracking-[0.4em] mt-2">focacceria</span>
 				</h1>
-				<p class="text-xl text-gray-600 mb-8">Handmade focaccia. Fresh fillings. The taste of Tuscany, one market at a time.</p>
-
-				<!-- This Week Schedule -->
-				<div class="text-left border-l-4 border-primary pl-4">
-					<p class="font-semibold text-lg mb-3">Find us this week:</p>
-					<ul class="space-y-2 text-gray-700">
-						<li><a href="https://www.google.com/maps/place/Bicester+Friday+Market/@51.8976942,-1.1554755,17z" target="_blank" class="hover:text-primary transition-colors">Fri - Bicester</a></li>
-						<li><a href="https://maps.google.com/?q=High+Street,+Kidlington,+OX5+2DH" target="_blank" class="hover:text-primary transition-colors">Sat - Kidlington</a></li>
-						<li><a href="https://www.google.com/maps/place/Thame+Market/@51.7465172,-0.9762741,17z" target="_blank" class="hover:text-primary transition-colors">Tue - Thame</a></li>
-					</ul>
-					<p class="text-xs text-gray-400 mt-2">Click for directions</p>
+				<p class="text-white/80 text-lg md:text-xl max-w-md mt-6 mb-6 animate-fade-up delay-1">Every bread, sauce &amp; filling — 100% homemade. Find us at your local market.</p>
+				<div class="flex flex-wrap gap-4 animate-fade-up delay-2">
+					<a href="#menu" class="bg-primary text-black px-7 py-3.5 font-bold tracking-wide hover:bg-white transition-colors inline-flex items-center leading-none">
+						See the menu
+					</a>
+					<a href="/order" class="border-2 border-white/50 text-white px-7 py-3.5 font-bold tracking-wide hover:bg-primary hover:text-black transition-colors inline-flex items-center leading-none">
+						Buy the bread
+					</a>
 				</div>
-				<div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-6">
-					<a href="/order" class="bg-primary px-6 py-3 font-semibold hover:bg-primary/80 transition-colors">Buy The Bread</a>
-					<a href="#find-us" class="text-sm text-gray-500 hover:text-primary">See full schedule →</a>
-				</div>
-				<a href="https://instagram.com/paninofocacceria" target="_blank" class="inline-flex items-center gap-2 mt-6 text-gray-500 hover:text-primary transition-colors">
-					<Instagram />
-					<span class="text-sm font-medium">@paninofocacceria</span>
-				</a>
 			</div>
+			<Image src={logo} alt="Panino Focacceria" class="hidden md:block w-64 lg:w-96 animate-fade-up delay-3 drop-shadow-2xl" />
 		</div>
 	</section>
+
+	<!-- Marquee ticker -->
+	<div class="bg-primary py-3">
+		<div class="marquee">
+			<div class="marquee__item">
+				{tickerContent.map((word, i) => (
+					<>
+						{i > 0 && <div class="size-1.5 bg-black rounded-full shrink-0"></div>}
+						<span class="text-black font-bold uppercase tracking-[0.25em] text-sm whitespace-nowrap">{word}</span>
+					</>
+				))}
+				<div class="size-1.5 bg-black rounded-full shrink-0"></div>
+			</div>
+			<div class="marquee__item" aria-hidden="true">
+				{tickerContent.map((word, i) => (
+					<>
+						{i > 0 && <div class="size-1.5 bg-black rounded-full shrink-0"></div>}
+						<span class="text-black font-bold uppercase tracking-[0.25em] text-sm whitespace-nowrap">{word}</span>
+					</>
+				))}
+				<div class="size-1.5 bg-black rounded-full shrink-0"></div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Menu -->
-	<section id="menu" class="py-20 px-6 bg-white">
-		<h2 class="text-3xl font-bold text-center mb-12">The Menu</h2>
-		<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-			<!-- Sandwich 1 -->
-			<div class="bg-white p-3 pb-6 shadow-lg rotate-2 hover:rotate-0 transition-transform">
-				<div class="aspect-square mb-4 overflow-hidden">
-					<Image src={prosciuttoSandwich} alt="Prosciutto focaccia sandwich" class="w-full h-full object-cover" />
-				</div>
-				<h3 class="text-xl font-semibold mb-1">Prosciutto</h3>
-				<p class="text-gray-600 text-sm">Aged prosciutto, fresh mozzarella, rocket on fresh focaccia.</p>
-			</div>
-			<!-- Sandwich 2 -->
-			<div class="bg-white p-3 pb-6 shadow-lg rotate-1 hover:rotate-0 transition-transform">
-				<div class="aspect-square mb-4 overflow-hidden">
-					<Image src={capreseSandwich} alt="Caprese focaccia sandwich" class="w-full h-full object-cover" />
-				</div>
-				<h3 class="text-xl font-semibold mb-1">Caprese</h3>
-				<p class="text-gray-600 text-sm">Fresh mozzarella, tomato, basil, balsamic glaze.</p>
-			</div>
-			<!-- Sandwich 3 -->
-			<div class="bg-white p-3 pb-6 shadow-lg rotate-1 hover:rotate-0 transition-transform">
-				<div class="aspect-square mb-4 overflow-hidden">
-					<Image src={sandwichTrio} alt="Selection of focaccia sandwiches" class="w-full h-full object-cover object-bottom" />
-				</div>
-				<h3 class="text-xl font-semibold mb-1">Vegetariano</h3>
-				<p class="text-gray-600 text-sm">Grilled vegetables, goat cheese, rocket, balsamic glaze.</p>
-			</div>
-		</div>
-	</section>
-
-	<!-- Find Us -->
-	<section id="find-us" class="py-20 px-6 bg-primary/10">
-		<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-			<div class="aspect-video overflow-hidden">
-				<Image src={marketStall} alt="Panino Focacceria market stall" class="w-full h-full object-cover" />
-			</div>
-			<!-- Info -->
-			<div>
-				<h2 class="text-3xl font-bold mb-6">Find Us</h2>
-				<div class="space-y-4">
-					<div class="border-l-4 border-primary pl-4">
-						<p class="text-xl font-semibold">Bicester Friday Market</p>
-						<p class="text-gray-600">Fridays</p>
-					</div>
-					<div class="border-l-4 border-primary pl-4">
-						<p class="text-xl font-semibold">Kidlington</p>
-						<p class="text-gray-600">Saturdays</p>
-					</div>
-					<div class="border-l-4 border-primary pl-4">
-						<p class="text-xl font-semibold">Thame</p>
-						<p class="text-gray-600">Tuesdays</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Instagram -->
-	<section class="py-20 px-6 bg-white">
+	<section id="menu" class="py-24 px-6">
 		<div class="max-w-6xl mx-auto">
-			<h2 class="sr-only">Follow us on Instagram</h2>
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-				<div class="aspect-square overflow-hidden">
-					<Image src={prosciuttoSandwich} alt="Prosciutto sandwich" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+			<div class="mb-16">
+				<p class="text-black/40 font-bold uppercase tracking-[0.3em] text-sm mb-3">What we make</p>
+				<h2 class="text-5xl md:text-7xl font-900 tracking-tight">The Menu</h2>
+			</div>
+
+			<div class="grid md:grid-cols-3 gap-6 md:gap-10">
+				<!-- Polaroid 1 -->
+				<div class="group bg-white p-3 pb-8 shadow-xl md:-rotate-2 hover:rotate-0 hover:shadow-2xl transition-all duration-300 cursor-default">
+					<div class="aspect-square overflow-hidden">
+						<Image
+							src={prosciuttoSandwich}
+							alt="Prosciutto focaccia sandwich"
+							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+						/>
+					</div>
+					<div class="mt-4 px-1">
+						<h3 class="text-2xl font-800 mb-1">Prosciutto</h3>
+						<p class="text-black/50 text-sm leading-relaxed">Aged prosciutto, fresh mozzarella, rocket &amp; our house spread on golden focaccia.</p>
+					</div>
 				</div>
-				<div class="aspect-square overflow-hidden">
-					<Image src={capreseSandwich} alt="Caprese sandwich" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+
+				<!-- Polaroid 2 -->
+				<div class="group bg-white p-3 pb-8 shadow-xl md:rotate-1 hover:rotate-0 hover:shadow-2xl transition-all duration-300 md:translate-y-10 cursor-default">
+					<div class="aspect-square overflow-hidden">
+						<Image
+							src={capreseSandwich}
+							alt="Caprese focaccia sandwich"
+							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+						/>
+					</div>
+					<div class="mt-4 px-1">
+						<h3 class="text-2xl font-800 mb-1">Caprese</h3>
+						<p class="text-black/50 text-sm leading-relaxed">Fresh mozzarella, vine tomato, basil &amp; balsamic glaze. A classic done right.</p>
+					</div>
 				</div>
-				<div class="aspect-square overflow-hidden">
-					<Image src={marketStall} alt="Market stall" class="w-full h-full object-cover hover:scale-105 transition-transform" />
-				</div>
-				<div class="aspect-square overflow-hidden">
-					<Image src={sandwichTrio} alt="Sandwich selection" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+
+				<!-- Polaroid 3 -->
+				<div class="group bg-white p-3 pb-8 shadow-xl md:-rotate-1 hover:rotate-0 hover:shadow-2xl transition-all duration-300 cursor-default">
+					<div class="aspect-square overflow-hidden">
+						<Image
+							src={sandwichTrio}
+							alt="Selection of focaccia sandwiches"
+							class="w-full h-full object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+						/>
+					</div>
+					<div class="mt-4 px-1">
+						<h3 class="text-2xl font-800 mb-1">&amp; More</h3>
+						<p class="text-black/50 text-sm leading-relaxed">Mortadella, vegetariano, seasonal specials — the menu changes with the seasons and our mood.</p>
+					</div>
 				</div>
 			</div>
-			<p class="text-center">
-				<a
-					href="https://instagram.com/paninofocacceria"
-					target="_blank"
-					class="text-lg font-semibold bg-primary px-4 py-2 hover:bg-primary/80 transition-colors inline-block"
-				>
-					@paninofocacceria
-				</a>
-			</p>
 		</div>
 	</section>
+
+	<!-- Story -->
+	<section id="story" class="relative overflow-hidden">
+		<div class="grid md:grid-cols-2 min-h-150">
+			<div class="relative overflow-hidden">
+				<Image
+					src={marketStall}
+					alt="Panino Focacceria market stall with sunflowers"
+					class="absolute inset-0 w-full h-full object-cover"
+				/>
+			</div>
+			<div class="bg-primary/10 px-8 md:px-16 py-20 md:py-28 flex flex-col justify-center">
+				<p class="text-black/40 font-bold uppercase tracking-[0.3em] text-sm mb-6">Our story</p>
+				<h2 class="text-4xl md:text-5xl font-900 leading-tight tracking-tight mb-8">
+					Inspired by<br/><span class="text-primary">Tuscany.</span><br/>Made in<br/><span class="text-primary">Oxfordshire.</span>
+				</h2>
+				<p class="text-black/60 text-lg leading-relaxed max-w-md">We offer more than incredible sandwiches. Every bread, sauce and side is 100% homemade and uniquely ours — premium ingredients, traditional tastes.</p>
+				<p class="text-black/40 text-lg mt-4 italic">One bite, and you'll already be planning the next.</p>
+			</div>
+		</div>
+	</section>
+
 </Layout>
