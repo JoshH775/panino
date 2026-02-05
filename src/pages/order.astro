@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Image } from 'astro:assets'
+import prosciuttoSandwich from '../images/prosciutto-sandwich.jpg'
+import capreseSandwich from '../images/caprese-sandwich.jpg'
+import sandwichTrio from '../images/sandwich-trio.jpg'
+
+const products = [
+	{ id: 'prosciutto', name: 'Prosciutto', description: 'Aged prosciutto, fresh mozzarella, rocket & our house spread on golden focaccia.', price: 750, image: prosciuttoSandwich },
+	{ id: 'caprese', name: 'Caprese', description: 'Fresh mozzarella, vine tomato, basil & balsamic glaze. A classic done right.', price: 700, image: capreseSandwich },
+	{ id: 'vegetariano', name: 'Vegetariano', description: 'Grilled vegetables, goat cheese, rocket, balsamic glaze.', price: 650, image: sandwichTrio },
+]
+---
+
+<Layout title="Order | Panino Focacceria" description="Order handmade Tuscan-style focaccia sandwiches for collection.">
+	<div id="order-page">
+		<!-- Page header -->
+		<div class="py-12 px-6">
+			<div class="max-w-6xl mx-auto">
+				<p class="text-black/40 font-bold uppercase tracking-[0.3em] text-sm mb-3">Place your order</p>
+				<h1 class="text-5xl md:text-7xl font-900 tracking-tight">Buy the Bread</h1>
+				<p class="text-black/50 mt-4 text-lg max-w-md">Pick your sandwiches, fill in your details, collect at the stall.</p>
+			</div>
+		</div>
+
+		<form id="order-form" class="px-6 pb-16">
+			<div class="max-w-6xl mx-auto md:grid md:grid-cols-[1fr_380px] md:gap-12 md:items-start">
+
+				<!-- Left: product list -->
+				<div class="space-y-6 mb-10 md:mb-0">
+					{products.map((product, i) => (
+						<div
+							class="product-card group bg-white p-3 shadow-xl transition-all duration-300 cursor-pointer select-none"
+							data-product-id={product.id}
+							data-price={product.price}
+						>
+							<div class="flex gap-4">
+								<div class="w-28 h-28 sm:w-36 sm:h-36 shrink-0 overflow-hidden">
+									<Image
+										src={product.image}
+										alt={product.name}
+										class:list={[
+											"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105",
+											product.id === 'vegetariano' && "object-bottom"
+										]}
+									/>
+								</div>
+								<div class="flex-1 py-1 flex flex-col justify-between">
+									<div>
+										<div class="flex items-baseline justify-between gap-3 mb-1">
+											<h3 class="text-2xl font-800">{product.name}</h3>
+											<span class="text-xl font-900 text-primary whitespace-nowrap">&pound;{(product.price / 100).toFixed(2)}</span>
+										</div>
+										<p class="text-black/50 text-sm leading-relaxed">{product.description}</p>
+									</div>
+									<div class="flex items-center gap-3 mt-3">
+										<button type="button" class="qty-btn size-10 bg-black/5 font-bold text-lg leading-none hover:bg-black/10 transition-colors" data-action="decrement" data-product-id={product.id}>&minus;</button>
+										<span class="qty-display text-xl font-900 w-6 text-center tabular-nums" data-product-id={product.id}>0</span>
+										<button type="button" class="qty-btn size-10 bg-primary font-bold text-lg leading-none hover:bg-primary/80 transition-colors" data-action="increment" data-product-id={product.id}>+</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+
+				<!-- Right: order summary + form -->
+				<div class="md:sticky md:top-24">
+					<div class="bg-white p-6 shadow-xl">
+						<h2 class="text-xl font-800 mb-1">Your order</h2>
+						<div id="order-summary" class="text-black/40 text-sm mb-6">Nothing yet.</div>
+
+						<div class="space-y-4 mb-6">
+							<input type="text" name="customerName" required placeholder="Your name"
+								class="w-full border-b-2 border-black/10 px-1 py-2 bg-transparent focus:border-primary focus:outline-none placeholder:text-black/30 font-medium" />
+							<input type="email" name="email" required placeholder="Email"
+								class="w-full border-b-2 border-black/10 px-1 py-2 bg-transparent focus:border-primary focus:outline-none placeholder:text-black/30 font-medium" />
+							<input type="tel" name="phone" required placeholder="Phone"
+								class="w-full border-b-2 border-black/10 px-1 py-2 bg-transparent focus:border-primary focus:outline-none placeholder:text-black/30 font-medium" />
+						</div>
+
+						<button type="submit" id="submit-btn" disabled
+							class="w-full bg-black/10 text-black/30 py-4 font-bold tracking-wide transition-colors cursor-not-allowed">
+							Pick something first
+						</button>
+
+						<div id="error-msg" class="hidden mt-4 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm">
+							<span id="error-text"></span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</form>
+
+		<!-- Success (replaces form) -->
+		<div id="success-msg" class="hidden px-6 pb-24">
+			<div class="max-w-md mx-auto bg-white shadow-xl p-12 text-center">
+				<div class="size-24 bg-primary flex items-center justify-center mx-auto mb-6 text-5xl font-900">&#10003;</div>
+				<h2 class="text-4xl font-900 mb-3">Sorted.</h2>
+				<p class="text-black/50 mb-8">We'll have your order ready. See you at the stall.</p>
+				<a href="/" class="bg-primary px-8 py-4 font-bold tracking-wide hover:bg-black hover:text-primary transition-colors inline-block">Back to home</a>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.product-card[data-selected="true"] {
+		box-shadow: 0 0 0 3px var(--color-primary), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+	}
+</style>
+
+<script>
+	import { actions } from 'astro:actions';
+
+	const quantities: Record<string, number> = {};
+	const prices: Record<string, number> = {};
+	const names: Record<string, string> = { prosciutto: 'Prosciutto', caprese: 'Caprese', vegetariano: 'Vegetariano' };
+
+	document.querySelectorAll<HTMLDivElement>('.product-card').forEach((card) => {
+		const id = card.dataset.productId!;
+		prices[id] = Number(card.dataset.price);
+	});
+
+	function updateSummary() {
+		const summary = document.getElementById('order-summary')!;
+		const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+		const items = Object.entries(quantities).filter(([, qty]) => qty > 0);
+
+		if (items.length === 0) {
+			summary.innerHTML = 'Nothing yet.';
+			summary.className = 'text-black/40 text-sm mb-6';
+			submitBtn.disabled = true;
+			submitBtn.textContent = 'Pick something first';
+			submitBtn.className = 'w-full bg-black/10 text-black/30 py-4 font-bold tracking-wide transition-colors cursor-not-allowed';
+			return;
+		}
+
+		const total = items.reduce((sum, [id, qty]) => sum + prices[id] * qty, 0);
+		const lines = items.map(([id, qty]) => `<div class="flex justify-between"><span>${qty}&times; ${names[id]}</span><span>&pound;${((prices[id] * qty) / 100).toFixed(2)}</span></div>`).join('');
+		summary.innerHTML = `<div class="space-y-1 text-sm text-black/60 mb-4">${lines}</div><div class="flex justify-between font-800 text-lg border-t border-black/10 pt-3"><span>Total</span><span class="text-primary">&pound;${(total / 100).toFixed(2)}</span></div>`;
+		summary.className = 'mb-6';
+
+		submitBtn.disabled = false;
+		submitBtn.textContent = `Place order — £${(total / 100).toFixed(2)}`;
+		submitBtn.className = 'w-full bg-primary py-4 font-bold tracking-wide hover:bg-black hover:text-primary transition-colors cursor-pointer';
+	}
+
+	document.querySelectorAll<HTMLButtonElement>('.qty-btn').forEach((btn) => {
+		btn.addEventListener('click', (e) => {
+			e.stopPropagation();
+			const id = btn.dataset.productId!;
+			const action = btn.dataset.action as 'increment' | 'decrement';
+
+			if (!quantities[id]) quantities[id] = 0;
+			if (action === 'increment') quantities[id]++;
+			if (action === 'decrement' && quantities[id] > 0) quantities[id]--;
+
+			document.querySelector<HTMLSpanElement>(`.qty-display[data-product-id="${id}"]`)!.textContent = String(quantities[id]);
+
+			const card = document.querySelector<HTMLDivElement>(`.product-card[data-product-id="${id}"]`)!;
+			card.dataset.selected = quantities[id] > 0 ? 'true' : 'false';
+
+			updateSummary();
+		});
+	});
+
+	document.querySelectorAll<HTMLDivElement>('.product-card').forEach((card) => {
+		card.addEventListener('click', (e) => {
+			if ((e.target as HTMLElement).closest('.qty-btn')) return;
+			const id = card.dataset.productId!;
+			if (!quantities[id]) quantities[id] = 0;
+			quantities[id]++;
+			document.querySelector<HTMLSpanElement>(`.qty-display[data-product-id="${id}"]`)!.textContent = String(quantities[id]);
+			card.dataset.selected = 'true';
+			updateSummary();
+		});
+	});
+
+	const form = document.getElementById('order-form') as HTMLFormElement;
+	const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+	const successMsg = document.getElementById('success-msg')!;
+	const errorMsg = document.getElementById('error-msg')!;
+	const errorText = document.getElementById('error-text')!;
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		errorMsg.classList.add('hidden');
+
+		const items = Object.entries(quantities)
+			.filter(([, qty]) => qty > 0)
+			.map(([productId, quantity]) => ({ productId, quantity }));
+
+		if (items.length === 0) return;
+
+		const formData = new FormData(form);
+		submitBtn.disabled = true;
+		submitBtn.textContent = 'Placing order…';
+
+		const { data, error } = await actions.placeOrder({
+			customerName: formData.get('customerName') as string,
+			email: formData.get('email') as string,
+			phone: formData.get('phone') as string,
+			items,
+		});
+
+		if (error) {
+			submitBtn.disabled = false;
+			updateSummary();
+			errorMsg.classList.remove('hidden');
+			errorText.textContent = error.message;
+			return;
+		}
+
+		form.classList.add('hidden');
+		successMsg.classList.remove('hidden');
+	});
+</script>
