@@ -1,5 +1,7 @@
 ---
 import '../global.css'
+import { Image } from 'astro:assets'
+import logo from '../images/logo.png'
 
 interface Props {
 	title?: string
@@ -47,29 +49,41 @@ const url = "https://www.paninofocacceria.com"
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 	</head>
-	<body class="bg-white text-black">
+	<body class="bg-cream text-black min-h-screen flex flex-col">
 		<!-- Header -->
-		<header class="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-between items-center px-6 py-4 bg-primary">
-			<a href="/" class="font-bold tracking-tight">
-				<span class="text-2xl">panino</span>
-				<span class="text-xl">focacceria</span>
-			</a>
-			<nav class="flex gap-6 text-base font-medium">
-				<a href="/#menu" class="hover:opacity-70 transition-opacity">Menu</a>
-				<a href="/#find-us" class="hover:opacity-70 transition-opacity">Find Us</a>
-				<a href="/order" class="hover:opacity-70 transition-opacity">Buy The Bread</a>
-			</nav>
+		<header class="fixed top-0 left-0 right-0 z-50 bg-primary h-[var(--header-height)]">
+			<div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+				<a href="/" class="font-bold text-sm tracking-widest text-black uppercase">
+					PANINO FOCACCERIA
+				</a>
+				<nav class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-black">
+					<a href="/#menu" class="hover:opacity-60 transition-opacity">Menu</a>
+					<a href="/#story" class="hover:opacity-60 transition-opacity">Story</a>
+					<a href="/order" class="bg-black text-primary px-5 py-2 tracking-wider hover:bg-white hover:text-black transition-colors">Order</a>
+				</nav>
+			</div>
 		</header>
 
-		<main>
+		<main class="flex-1 pt-(--header-height)">
 			<slot />
 		</main>
 
 		<!-- Footer -->
-		<footer class="py-8 px-6 bg-white border-t-2 border-primary">
-			<p class="text-center text-sm">© {new Date().getFullYear()} <span class="text-primary">Panino</span> Focacceria</p>
+		<footer class="bg-primary text-black">
+			<div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
+				<div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+					<span class="font-bold">Find us:</span>
+					<a href="https://www.google.com/maps/place/Bicester+Friday+Market/@51.8976942,-1.1554755,17z" target="_blank" class="hover:underline"><span class="font-bold">Fri</span> Bicester</a>
+					<a href="https://maps.google.com/?q=High+Street,+Kidlington,+OX5+2DH" target="_blank" class="hover:underline"><span class="font-bold">Sat</span> Kidlington</a>
+					<a href="https://www.google.com/maps/place/Thame+Market/@51.7465172,-0.9762741,17z" target="_blank" class="hover:underline"><span class="font-bold">Tue</span> Thame</a>
+				</div>
+				<div class="flex items-center gap-4">
+					<a href="https://instagram.com/paninofocacceria" target="_blank" class="font-bold hover:underline">@paninofocacceria</a>
+					<span class="text-black/40 text-xs">&copy; {new Date().getFullYear()}</span>
+				</div>
+			</div>
 		</footer>
 	</body>
 </html>
