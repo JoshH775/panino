@@ -54,7 +54,7 @@ const url = "https://www.paninofocacceria.com"
 	<body class="bg-cream text-black min-h-screen flex flex-col">
 		<!-- Header -->
 		<header class="fixed top-0 left-0 right-0 z-50 bg-primary h-[var(--header-height)]">
-			<div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+			<div class="max-w-7xl mx-auto px-5 md:px-6 h-full flex justify-between items-center">
 				<a href="/" class="font-bold text-sm tracking-widest text-black uppercase">
 					PANINO FOCACCERIA
 				</a>
@@ -63,8 +63,22 @@ const url = "https://www.paninofocacceria.com"
 					<a href="/#story" class="hover:opacity-60 transition-opacity">Story</a>
 					<a href="/order" class="bg-black text-primary px-5 py-2 tracking-wider hover:bg-white hover:text-black transition-colors">Order</a>
 				</nav>
+				<button id="mobile-nav-toggle" class="md:hidden flex flex-col justify-center gap-1.25 w-7 h-7" aria-label="Toggle menu">
+					<span class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"></span>
+					<span class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"></span>
+					<span class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"></span>
+				</button>
 			</div>
 		</header>
+
+		<!-- Mobile nav dropdown -->
+		<div id="mobile-nav" class="fixed top-(--header-height) left-0 right-0 z-40 bg-black overflow-hidden transition-[max-height] duration-300 ease-out max-h-0 md:hidden">
+			<nav class="flex flex-col px-5 py-4 gap-3">
+				<a href="/#menu" class="text-primary font-bold uppercase tracking-widest text-sm">Menu</a>
+				<a href="/#story" class="text-primary font-bold uppercase tracking-widest text-sm">Story</a>
+				<a href="/order" class="bg-primary text-black px-5 py-3 font-bold uppercase tracking-widest text-sm text-center mt-1">Order</a>
+			</nav>
+		</div>
 
 		<main class="flex-1 pt-(--header-height)">
 			<slot />
@@ -85,5 +99,24 @@ const url = "https://www.paninofocacceria.com"
 				</div>
 			</div>
 		</footer>
+		<script>
+			const toggle = document.getElementById('mobile-nav-toggle')!;
+			const nav = document.getElementById('mobile-nav')!;
+			const bars = toggle.querySelectorAll('span');
+			let open = false;
+
+			function setOpen(val: boolean) {
+				open = val;
+				nav.style.maxHeight = open ? nav.scrollHeight + 'px' : '0';
+				bars[0].style.transform = open ? 'translateY(7px) rotate(45deg)' : '';
+				bars[1].style.opacity = open ? '0' : '';
+				bars[2].style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
+			}
+
+			toggle.addEventListener('click', () => setOpen(!open));
+			nav.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => setOpen(false));
+			});
+		</script>
 	</body>
 </html>
