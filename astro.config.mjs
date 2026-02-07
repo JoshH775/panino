@@ -13,5 +13,9 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
+  server: {
+    allowedHosts: ['latoyia-chartographical-laverne.ngrok-free.dev']
+  },
+
   adapter: cloudflare()
 });
