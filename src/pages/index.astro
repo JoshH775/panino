@@ -7,6 +7,7 @@ import soupPhoto from '../images/soup.webp'
 import marketStall from '../images/market-stall.webp'
 import capreseSandwich from '../images/caprese-sandwich.webp'
 import prosciuttoSandwich from '../images/prosciutto-sandwich.webp'
+import sandwichTrio from '../images/sandwich-trio.webp'
 
 const tickerWords = [
 	'Focaccia',
@@ -83,57 +84,98 @@ const tickerContent = [...tickerWords, ...tickerWords]
 	<!-- Menu -->
 	<section id="menu" class="py-14 md:py-22 px-5 md:px-6">
 		<div class="max-w-6xl mx-auto">
-			<div class="mb-10 md:mb-16">
-				<p class="text-black/40 font-bold uppercase tracking-[0.3em] text-sm mb-3">What we make</p>
-				<h2 class="text-4xl md:text-7xl font-900 tracking-tight">The Menu</h2>
-			</div>
-
-			<div class="grid md:grid-cols-3 gap-6 md:gap-10">
-				<!-- Polaroid 1 -->
-				<div class="group bg-white p-3 pb-8 shadow-xl md:-rotate-2 hover:rotate-0 hover:shadow-2xl transition-all duration-300 cursor-default">
-					<div class="aspect-square overflow-hidden">
-						<Image
-							src={prosciuttoSandwich}
-							alt="Prosciutto focaccia sandwich"
-							class="w-full h-full object-cover transition-transform duration-500"
-						/>
-					</div>
-					<div class="mt-4 px-1">
-						<h3 class="text-2xl font-800 mb-1">Prosciutto</h3>
-						<p class="text-black/50 text-sm leading-relaxed">Aged prosciutto, fresh mozzarella, rocket &amp; our house spread on golden focaccia.</p>
-					</div>
+			<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-16">
+				<div>
+					<p class="text-black/40 font-bold uppercase tracking-[0.3em] text-sm mb-3">What we make</p>
+					<h2 class="text-4xl md:text-7xl font-900 tracking-tight">The Menu</h2>
 				</div>
-
-				<!-- Polaroid 2 -->
-				<div class="group bg-white p-3 pb-8 shadow-xl md:rotate-1 hover:rotate-0 hover:shadow-2xl transition-all duration-300 md:translate-y-10 cursor-default">
-					<div class="aspect-square overflow-hidden">
-						<Image
-							src={capreseSandwich}
-							alt="Caprese focaccia sandwich"
-							class="w-full h-full object-cover transition-transform duration-500"
-						/>
+				<div class="flex justify-center md:justify-end gap-3 md:gap-4">
+					<!-- Polaroid 1 -->
+					<div class="group bg-white p-1.5 pb-4 shadow-lg md:-rotate-3 hover:rotate-0 hover:shadow-xl transition-all duration-300 cursor-default w-28 md:w-36 shrink-0">
+						<div class="aspect-square overflow-hidden">
+							<Image
+								src={prosciuttoSandwich}
+								alt="Prosciutto focaccia sandwich"
+								class="w-full h-full object-cover transition-transform duration-500"
+							/>
+						</div>
 					</div>
-					<div class="mt-4 px-1">
-						<h3 class="text-2xl font-800 mb-1">Caprese</h3>
-						<p class="text-black/50 text-sm leading-relaxed">Fresh mozzarella, vine tomato, basil &amp; balsamic glaze. A classic done right.</p>
+					<!-- Polaroid 2 -->
+					<div class="group bg-white p-1.5 pb-4 shadow-lg md:rotate-2 hover:rotate-0 hover:shadow-xl transition-all duration-300 cursor-default w-28 md:w-36 shrink-0 translate-y-3">
+						<div class="aspect-square overflow-hidden">
+							<Image
+								src={capreseSandwich}
+								alt="Caprese focaccia sandwich"
+								class="w-full h-full object-cover transition-transform duration-500"
+							/>
+						</div>
 					</div>
-				</div>
-
-				<!-- Polaroid 3 -->
-				<div class="group bg-white p-3 pb-8 shadow-xl md:-rotate-1 hover:rotate-0 hover:shadow-2xl transition-all duration-300 cursor-default">
-					<div class="aspect-square overflow-hidden">
-						<Image
-							src={menuPhoto}
-							alt="Full menu board"
-							class="w-full h-full object-cover object-top transition-transform duration-500"
-						/>
-					</div>
-					<div class="mt-4 px-1">
-						<h3 class="text-2xl font-800 mb-1">The Full Menu</h3>
-						<p class="text-black/50 text-sm leading-relaxed">All sandwiches £7.50. Ask about today's special sandwich &amp; soup of the day.</p>
+					<!-- Polaroid 3 -->
+					<div class="group bg-white p-1.5 pb-4 shadow-lg md:-rotate-2 hover:rotate-0 hover:shadow-xl transition-all duration-300 cursor-default w-28 md:w-36 shrink-0 -translate-y-1">
+						<div class="aspect-square overflow-hidden">
+							<Image
+								src={sandwichTrio}
+								alt="Three focaccia sandwiches"
+								class="w-full h-full object-cover transition-transform duration-500"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- Full menu -->
+			<div class="space-y-8 md:space-y-10">
+				<div>
+					<div class="flex items-baseline justify-between gap-3">
+						<h3 class="text-2xl md:text-4xl font-900 shrink-0">&ldquo;Big Paulie&rdquo;</h3>
+						<div class="flex-1 border-b-2 border-dotted border-black/15 mb-1.5 md:mb-2 min-w-4"></div>
+						<span class="text-xs md:text-sm font-bold uppercase tracking-widest text-primary shrink-0">Trentino</span>
+					</div>
+					<p class="text-black/45 text-sm md:text-base mt-1.5">Grilled chicken breast, spicy &rsquo;nduja salami, provolone cheese, hot honey.</p>
+				</div>
+				<div>
+					<div class="flex items-baseline justify-between gap-3">
+						<h3 class="text-2xl md:text-4xl font-900 shrink-0">&ldquo;Little Vinnie&rdquo;</h3>
+						<div class="flex-1 border-b-2 border-dotted border-black/15 mb-1.5 md:mb-2 min-w-4"></div>
+						<span class="text-xs md:text-sm font-bold uppercase tracking-widest text-primary shrink-0">Mancuso</span>
+					</div>
+					<p class="text-black/45 text-sm md:text-base mt-1.5">Prosciutto cotto ham, fresh mozzarella, roasted red peppers, tomato jam.</p>
+				</div>
+				<div>
+					<div class="flex items-baseline justify-between gap-3">
+						<h3 class="text-2xl md:text-4xl font-900 shrink-0">&ldquo;The Don&rdquo;</h3>
+						<div class="flex-1 border-b-2 border-dotted border-black/15 mb-1.5 md:mb-2 min-w-4"></div>
+						<span class="text-xs md:text-sm font-bold uppercase tracking-widest text-primary shrink-0">Godfather of the Lot</span>
+					</div>
+					<p class="text-black/45 text-sm md:text-base mt-1.5">Prosciutto &amp; salami, gorgonzola spread, caramelized onion.</p>
+				</div>
+				<div>
+					<div class="flex items-baseline justify-between gap-3">
+						<h3 class="text-2xl md:text-4xl font-900 shrink-0">&ldquo;The Big Cheese&rdquo;</h3>
+						<div class="flex-1 border-b-2 border-dotted border-black/15 mb-1.5 md:mb-2 min-w-4"></div>
+						<span class="text-xs md:text-sm font-bold uppercase tracking-widest text-primary shrink-0">Caprese</span>
+					</div>
+					<p class="text-black/45 text-sm md:text-base mt-1.5">Mozzarella &amp; tomatoes, eggplant &amp; roasted pepper spread, pesto &amp; balsamic reduction.</p>
+				</div>
+				<div>
+					<div class="flex items-baseline justify-between gap-3">
+						<h3 class="text-2xl md:text-4xl font-900 shrink-0">&ldquo;Pretty Boy&rdquo;</h3>
+						<div class="flex-1 border-b-2 border-dotted border-black/15 mb-1.5 md:mb-2 min-w-4"></div>
+						<span class="text-xs md:text-sm font-bold uppercase tracking-widest text-primary shrink-0">Rossi &middot; Veggie</span>
+					</div>
+					<p class="text-black/45 text-sm md:text-base mt-1.5">Grilled courgette &amp; portabella mushrooms, artichoke hummus &amp; baby spinach.</p>
+				</div>
+				<div>
+					<div class="flex items-baseline justify-between gap-3">
+						<h3 class="text-2xl md:text-4xl font-900 shrink-0">&ldquo;Fat Tony&rdquo;</h3>
+						<div class="flex-1 border-b-2 border-dotted border-black/15 mb-1.5 md:mb-2 min-w-4"></div>
+						<span class="text-xs md:text-sm font-bold uppercase tracking-widest text-primary shrink-0">Falcone</span>
+					</div>
+					<p class="text-black/45 text-sm md:text-base mt-1.5">Italian mortadella, burrata cream, tomatoes, honey garlic vinaigrette.</p>
+				</div>
+			</div>
+
+			<p class="mt-12 text-black/40 font-bold uppercase tracking-[0.2em] text-sm">All sandwiches £7.50 &middot; Ask about today&rsquo;s special</p>
 		</div>
 	</section>
 
@@ -150,7 +192,7 @@ const tickerContent = [...tickerWords, ...tickerWords]
 			<div>
 				<p class="text-primary font-bold uppercase tracking-[0.3em] text-sm mb-3">Not just sandwiches</p>
 				<h3 class="text-white text-3xl md:text-5xl font-900 tracking-tight mb-4">Soup of the day.</h3>
-				<p class="text-white/50 text-base md:text-lg max-w-md leading-relaxed">Homemade, seasonal, topped with parmesan and pesto. The perfect side to your sandwich.</p>
+				<p class="text-white/50 text-base md:text-lg max-w-md leading-relaxed">All homemade, changes every week. Beef &amp; barley, minestrone, tomato&#8209;&#8209;whatever&rsquo;s on, it comes topped with parmesan and pesto.</p>
 			</div>
 		</div>
 	</section>
