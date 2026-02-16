@@ -8,6 +8,8 @@ import marketStall from '../images/market-stall.jpg'
 import capreseSandwich from '../images/caprese-sandwich.jpg'
 import prosciuttoSandwich from '../images/prosciutto-sandwich.jpg'
 import sandwichTrio from '../images/sandwich-trio.jpg'
+import menuPhoto from '../images/menu.PNG'
+import soupPhoto from '../images/soup.jpeg'
 
 const tickerWords = [
 	'Focaccia',
@@ -95,7 +97,7 @@ const tickerContent = [...tickerWords, ...tickerWords]
 						<Image
 							src={prosciuttoSandwich}
 							alt="Prosciutto focaccia sandwich"
-							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+							class="w-full h-full object-cover transition-transform duration-500"
 						/>
 					</div>
 					<div class="mt-4 px-1">
@@ -110,7 +112,7 @@ const tickerContent = [...tickerWords, ...tickerWords]
 						<Image
 							src={capreseSandwich}
 							alt="Caprese focaccia sandwich"
-							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+							class="w-full h-full object-cover transition-transform duration-500"
 						/>
 					</div>
 					<div class="mt-4 px-1">
@@ -123,16 +125,34 @@ const tickerContent = [...tickerWords, ...tickerWords]
 				<div class="group bg-white p-3 pb-8 shadow-xl md:-rotate-1 hover:rotate-0 hover:shadow-2xl transition-all duration-300 cursor-default">
 					<div class="aspect-square overflow-hidden">
 						<Image
-							src={sandwichTrio}
-							alt="Selection of focaccia sandwiches"
-							class="w-full h-full object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+							src={menuPhoto}
+							alt="Full menu board"
+							class="w-full h-full object-cover object-top transition-transform duration-500"
 						/>
 					</div>
 					<div class="mt-4 px-1">
-						<h3 class="text-2xl font-800 mb-1">&amp; More</h3>
-						<p class="text-black/50 text-sm leading-relaxed">Mortadella, vegetariano, seasonal specials. The menu changes with the seasons and our mood.</p>
+						<h3 class="text-2xl font-800 mb-1">The Full Menu</h3>
+						<p class="text-black/50 text-sm leading-relaxed">All sandwiches £7.50. Ask about today's special sandwich &amp; soup of the day.</p>
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Soup -->
+	<section class="bg-forest py-14 md:py-20 px-5 md:px-6">
+		<div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-16">
+			<div class="group w-56 md:w-80 shrink-0 bg-primary p-2 md:p-3 shadow-2xl shadow-2xl cursor-default overflow-hidden">
+				<Image
+					src={soupPhoto}
+					alt="Homemade soup with parmesan and pesto"
+					class="w-full group-hover:scale-[1.03] transition-transform duration-500"
+				/>
+			</div>
+			<div>
+				<p class="text-primary font-bold uppercase tracking-[0.3em] text-sm mb-3">Not just sandwiches</p>
+				<h3 class="text-white text-3xl md:text-5xl font-900 tracking-tight mb-4">Soup of the day.</h3>
+				<p class="text-white/50 text-base md:text-lg max-w-md leading-relaxed">Homemade, seasonal, topped with parmesan and pesto. The perfect side to your sandwich.</p>
 			</div>
 		</div>
 	</section>
