@@ -17,5 +17,7 @@ export default defineConfig({
     allowedHosts: ['latoyia-chartographical-laverne.ngrok-free.dev']
   },
 
-  adapter: cloudflare()
+  adapter: cloudflare({
+    imageService: 'cloudflare'
+  })
 });
