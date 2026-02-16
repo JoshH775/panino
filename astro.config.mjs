@@ -7,7 +7,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'static',
 
   vite: {
     plugins: [tailwindcss()]
@@ -17,5 +17,10 @@ export default defineConfig({
     allowedHosts: ['latoyia-chartographical-laverne.ngrok-free.dev']
   },
 
-  adapter: cloudflare()
+  adapter: cloudflare({
+    imageService: 'passthrough',
+    platformProxy: {
+      enabled: true
+    }
+  })
 });

@@ -18,7 +18,7 @@
       "binding": "DB",
       "database_name": "panino",
       "database_id": "20a2d507-559d-48ff-83e8-e44d8c265a95",
-      "migrations_dir": "./src/db/migrations",
+      "migrations_dir": "./src/db/migrations"
     }
   ]
 }
