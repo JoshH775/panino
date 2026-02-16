@@ -18,6 +18,9 @@ export default defineConfig({
   },
 
   adapter: cloudflare({
-    imageService: 'cloudflare'
+    imageService: 'cloudflare',
+    platformProxy: {
+      enabled: true
+    }
   })
 });
