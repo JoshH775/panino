@@ -1,6 +1,6 @@
 {
-  "name": "panino",
-  "short_name": "panino",
+  "name": "Panino Focacceria",
+  "short_name": "Panino",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#f6c92f",
-  "background_color": "#f6c92f",
+  "theme_color": "#fcc400",
+  "background_color": "#fcc400",
   "display": "standalone"
 }

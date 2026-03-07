@@ -13,7 +13,8 @@ const {
 	description = "Homemade Tuscan-style focaccia sandwiches at your local market. Fresh ingredients, traditional recipes."
 } = Astro.props
 
-const url = "https://www.paninofocacceria.com"
+const siteUrl = "https://www.paninofocacceria.com"
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href
 ---
 
 <html lang="en">
@@ -21,43 +22,59 @@ const url = "https://www.paninofocacceria.com"
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#fcc400" />
 
 		<!-- SEO -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<link rel="canonical" href={url} />
+		<link rel="canonical" href={canonicalUrl} />
 
 		<!-- Open Graph -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={url} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={`${url}/og-image.jpg`} />
-
-		<!-- Open Graph Image -->
-		<meta property="og:image" content={`${url}/og-image.jpg`} />
+		<meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
 
 		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Panino Focacceria" />
+		<link rel="manifest" href="/site.webmanifest" />
 
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="MyWebSite" />
-		<link rel="manifest" href="/site.webmanifest" />
-		
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Restaurant",
+			"name": "Panino Focacceria",
+			"description": "Homemade Tuscan-style focaccia sandwiches at Oxfordshire markets.",
+			"url": siteUrl,
+			"menu": `${siteUrl}/#menu`,
+			"servesCuisine": "Italian",
+			"priceRange": "£",
+			"currenciesAccepted": "GBP",
+			"image": `${siteUrl}/og-image.jpg`,
+			"address": {
+				"@type": "PostalAddress",
+				"addressRegion": "Oxfordshire",
+				"addressCountry": "GB"
+			}
+		})} />
 	</head>
 	<body class="bg-cream text-black min-h-screen flex flex-col">
 		<!-- Header -->
@@ -97,12 +114,12 @@ const url = "https://www.paninofocacceria.com"
 			<div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
 				<div class="flex flex-wrap items-center gap-x-4 gap-y-1">
 					<span class="font-bold">Find us:</span>
-					<a href="https://www.google.com/maps/place/Bicester+Friday+Market/@51.8976942,-1.1554755,17z" target="_blank" class="hover:underline"><span class="font-bold">Fri</span> Bicester</a>
-					<a href="https://maps.google.com/?q=High+Street,+Kidlington,+OX5+2DH" target="_blank" class="hover:underline"><span class="font-bold">Sat</span> Kidlington</a>
-					<a href="https://www.google.com/maps/place/Thame+Market/@51.7465172,-0.9762741,17z" target="_blank" class="hover:underline"><span class="font-bold">Tue</span> Thame</a>
+					<a href="https://www.google.com/maps/place/Bicester+Friday+Market/@51.8976942,-1.1554755,17z" target="_blank" rel="noopener noreferrer" class="hover:underline"><span class="font-bold">Fri</span> Bicester</a>
+					<a href="https://maps.google.com/?q=High+Street,+Kidlington,+OX5+2DH" target="_blank" rel="noopener noreferrer" class="hover:underline"><span class="font-bold">Sat</span> Kidlington</a>
+					<a href="https://www.google.com/maps/place/Thame+Market/@51.7465172,-0.9762741,17z" target="_blank" rel="noopener noreferrer" class="hover:underline"><span class="font-bold">Tue</span> Thame</a>
 				</div>
 				<div class="flex items-center gap-4">
-					<a href="https://instagram.com/paninofocacceria" target="_blank" class="font-bold hover:underline">@paninofocacceria</a>
+					<a href="https://instagram.com/paninofocacceria" target="_blank" rel="noopener noreferrer" class="font-bold hover:underline">@paninofocacceria</a>
 					<span class="text-black/40 text-xs">&copy; {new Date().getFullYear()}</span>
 				</div>
 			</div>
