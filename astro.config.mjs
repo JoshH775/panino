@@ -7,7 +7,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.paninofocacceria.com',
+  site: 'https://paninofocacceria.com',
   output: 'static',
   integrations: [sitemap()],
 

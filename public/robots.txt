@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.paninofocacceria.com/sitemap-index.xml
+Sitemap: https://paninofocacceria.com/sitemap-index.xml
