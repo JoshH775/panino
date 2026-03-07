@@ -1,34 +1,122 @@
 ---
-import Header from "../components/Header.astro";
+import '../global.css'
+import { Image } from 'astro:assets'
+import logo from '../images/logo.webp'
+
+interface Props {
+	title?: string
+	description?: string
+}
+
+const {
+	title = "Panino Focacceria | Tuscan Style Focaccia Sandwiches",
+	description = "Homemade Tuscan-style focaccia sandwiches at your local market. Fresh ingredients, traditional recipes."
+} = Astro.props
+
+const url = "https://www.paninofocacceria.com"
 ---
 
-<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image" href="/panino-nobg.png" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Panino Focacceria</title>
-  </head>
-  <body class="flex flex-col bg-peach text-forest">
-    <Header />
-    <slot />
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={url} />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={url} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${url}/og-image.jpg`} />
+
+		<!-- Open Graph Image -->
+		<meta property="og:image" content={`${url}/og-image.jpg`} />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+	</head>
+	<body class="bg-cream text-black min-h-screen flex flex-col">
+		<!-- Header -->
+		<header class="fixed top-0 left-0 right-0 z-50 bg-primary h-[var(--header-height)]">
+			<div class="max-w-7xl mx-auto px-5 md:px-6 h-full flex justify-between items-center">
+				<a href="/" class="font-bold text-sm tracking-widest text-black uppercase">
+					PANINO FOCACCERIA
+				</a>
+				<nav class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-black">
+					<a href="/#menu" class="hover:opacity-60 transition-opacity">Menu</a>
+					<a href="/#story" class="hover:opacity-60 transition-opacity">Story</a>
+					<a href="/order" class="bg-black text-primary px-5 py-2 tracking-wider hover:bg-white hover:text-black transition-colors">Order</a>
+				</nav>
+				<button id="mobile-nav-toggle" class="md:hidden flex flex-col justify-center gap-1.25 w-7 h-7" aria-label="Toggle menu">
+					<span class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"></span>
+					<span class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"></span>
+					<span class="block w-full h-0.5 bg-black transition-all duration-300 origin-center"></span>
+				</button>
+			</div>
+		</header>
+
+		<!-- Mobile nav dropdown -->
+		<div id="mobile-nav" class="fixed top-(--header-height) left-0 right-0 z-40 bg-black overflow-hidden transition-[max-height] duration-300 ease-out max-h-0 md:hidden">
+			<nav class="flex flex-col px-5 py-4 gap-3">
+				<a href="/#menu" class="text-primary font-bold uppercase tracking-widest text-sm">Menu</a>
+				<a href="/#story" class="text-primary font-bold uppercase tracking-widest text-sm">Story</a>
+				<a href="/order" class="bg-primary text-black px-5 py-3 font-bold uppercase tracking-widest text-sm text-center mt-1">Order</a>
+			</nav>
+		</div>
+
+		<main class="flex-1 pt-(--header-height)">
+			<slot />
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-primary text-black">
+			<div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
+				<div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+					<span class="font-bold">Find us:</span>
+					<a href="https://www.google.com/maps/place/Bicester+Friday+Market/@51.8976942,-1.1554755,17z" target="_blank" class="hover:underline"><span class="font-bold">Fri</span> Bicester</a>
+					<a href="https://maps.google.com/?q=High+Street,+Kidlington,+OX5+2DH" target="_blank" class="hover:underline"><span class="font-bold">Sat</span> Kidlington</a>
+					<a href="https://www.google.com/maps/place/Thame+Market/@51.7465172,-0.9762741,17z" target="_blank" class="hover:underline"><span class="font-bold">Tue</span> Thame</a>
+				</div>
+				<div class="flex items-center gap-4">
+					<a href="https://instagram.com/paninofocacceria" target="_blank" class="font-bold hover:underline">@paninofocacceria</a>
+					<span class="text-black/40 text-xs">&copy; {new Date().getFullYear()}</span>
+				</div>
+			</div>
+		</footer>
+		<script>
+			const toggle = document.getElementById('mobile-nav-toggle')!;
+			const nav = document.getElementById('mobile-nav')!;
+			const bars = toggle.querySelectorAll('span');
+			let open = false;
+
+			function setOpen(val: boolean) {
+				open = val;
+				nav.style.maxHeight = open ? nav.scrollHeight + 'px' : '0';
+				bars[0].style.transform = open ? 'translateY(7px) rotate(45deg)' : '';
+				bars[1].style.opacity = open ? '0' : '';
+				bars[2].style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
+			}
+
+			toggle.addEventListener('click', () => setOpen(!open));
+			nav.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => setOpen(false));
+			});
+		</script>
+	</body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
-
-
-<script>
-  console.log(`Width: ${window.innerWidth}, Orientation: ${screen.orientation.type}`)
-
-</script>

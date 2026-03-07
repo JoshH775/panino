@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+	--color-primary: #fcc400;
+	--color-forest: #0c2618;
+	--color-cream: #fefcf3;
+}
+
+:root {
+	--header-height: 56px;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'League Spartan', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* Stagger animations */
+@keyframes fade-up {
+	from { opacity: 0; transform: translateY(24px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+	animation: fade-up 0.7s ease-out both;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Marquee */
+.marquee {
+	display: flex;
+	overflow: hidden;
+}
+
+.marquee__item {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	padding-right: 1.5rem;
+	animation: marquee 35s linear infinite;
+	will-change: transform;
+	backface-visibility: hidden;
+}
+
+@keyframes marquee {
+	from { transform: translateX(0%); }
+	to { transform: translateX(-100%); }
+}

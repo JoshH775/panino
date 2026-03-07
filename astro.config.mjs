@@ -1,11 +1,26 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
-import react from '@astrojs/react';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react()]
+  output: 'static',
+
+  vite: {
+    plugins: [tailwindcss()]
+  },
+
+  server: {
+    allowedHosts: ['latoyia-chartographical-laverne.ngrok-free.dev']
+  },
+
+  adapter: cloudflare({
+    imageService: 'passthrough',
+    platformProxy: {
+      enabled: true
+    }
+  })
 });
